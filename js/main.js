@@ -20,7 +20,7 @@ function elegirPalabra() {
   palabraElegida = listaPalabras[indice];
   largoPalabra = palabraElegida.length;
   for (let i = 0; i < largoPalabra; i += 1) {
-    palabraAdivinada.push("_") 
+    palabraAdivinada.push("_");
   }
   return
 }
@@ -29,9 +29,9 @@ function elegirPalabra() {
 /* Funcion que muestra la palabra que se va formando y las vidas restantes */
 /***************************************************************************/
 function mostrarTablero() {
-  console.log(palabraAdivinada.join(" "))
-  console.log("Te quedan " + vidas + " vidas")
-  console.log("Letras ya pedidas: " + letrasPedidas.join(","))
+  console.log(palabraAdivinada.join(" "));
+  console.log("Te quedan " + vidas + " vidas");
+  console.log("Letras ya pedidas: " + letrasPedidas.join(","));
 }
 
 /************************************************************************************/
@@ -40,29 +40,29 @@ function mostrarTablero() {
 function pedirLetra() {
   let letraOk = true;
   do {
-    letraOk = true
+    letraOk = true;
     letraIngresada = prompt("Ingresa una letra...");
     if (letraIngresada.length != 1) {
       console.warn("Ingresa una sola letra.");
-      letraOk = false
+      letraOk = false;
     } else {
       if (letraIngresada >= "a" && letraIngresada <= "z" || letraIngresada >= "A" && letraIngresada <= "Z") {
-        letraIngresada = letraIngresada.toUpperCase()
+        letraIngresada = letraIngresada.toUpperCase();
         for (letra in letrasPedidas) {
           if (letraIngresada == letrasPedidas[letra]) {
-            console.warn("Ya ingresaste esa letra")
-            letraOk = false
-            break
+            console.warn("Ya ingresaste esa letra");
+            letraOk = false;
+            break;
           }
         }
       } else { 
         console.warn('Ingresaste "' + letraIngresada + '", no es una letra.')
-        letraOk = false
+        letraOk = false;
       }
     }
   }while (!letraOk)
-  console.clear()
-  console.log('Ingresaste "' + letraIngresada + '"')
+  console.clear();
+  console.log('Ingresaste "' + letraIngresada + '"');
 }
 
 /*****************************************************************************************************/
@@ -79,10 +79,10 @@ function comprobarLetra() {
   }
   if (conta == 0) {
     vidas -= 1;
-    console.error('La letra "' + letraIngresada + '" no esta en la palabra')
+    console.error('La letra "' + letraIngresada + '" no esta en la palabra');
   } else {
     aciertos += conta;
-    console.log('La letra "' + letraIngresada + '" esta en la palabra')
+    console.log('La letra "' + letraIngresada + '" esta en la palabra');
   }
 }
 
@@ -106,24 +106,24 @@ do {
 
   nombre = prompt("Ingrese su nombre").toUpperCase();
   alert("Bienvenido " + nombre + ". Vamos a jugar al ahorcado.");
-  elegirPalabra()
+  elegirPalabra();
 
   //Se piden letras hasta que adivine la palabra o se quede sin vidas
   while(true){
-    mostrarTablero()
-    pedirLetra()
-    comprobarLetra()
+    mostrarTablero();
+    pedirLetra();
+    comprobarLetra();
     if (vidas == 0) {
-      mostrarTablero()
-      alert('Has perdido ' + nombre + '. La palabra era "' + palabraElegida + '".' )
-      break
+      mostrarTablero();
+      alert('Has perdido ' + nombre + '. La palabra era "' + palabraElegida + '".' );
+      break;
     }
     if (aciertos == largoPalabra) {
-      mostrarTablero()
-      alert('Felicitaciones ' + nombre + ', has ganado!!! La palabra es "' + palabraElegida + '".' )
-      break
+      mostrarTablero();
+      alert('Felicitaciones ' + nombre + ', has ganado!!! La palabra es "' + palabraElegida + '".' );
+      break;
     }
   }
   //Pregunto si quiere iniciar un nuevo juego
-  seguirJugando = confirm("¿Quieres volver a jugar?")
+  seguirJugando = confirm("¿Quieres volver a jugar?");
 }while (seguirJugando)
