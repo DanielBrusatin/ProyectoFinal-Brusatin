@@ -160,9 +160,9 @@ function comprobarLetra() {
 //   seguirJugando = confirm("¿Quiere/n jugar otra ronda?");
 // }while (seguirJugando);
 
-console.clear();
+// console.clear();
 
-// Muestro los puntajes de cada jugador ordenados de mayor a menor
-console.log("TABLA DE POSICIONES");
-jugadores.sort((a, b) => b.puntaje - a.puntaje);
-console.table(jugadores);
+// // Muestro los puntajes de cada jugador ordenados de mayor a menor
+// console.log("TABLA DE POSICIONES");
+// jugadores.sort((a, b) => b.puntaje - a.puntaje);
+// console.table(jugadores);
