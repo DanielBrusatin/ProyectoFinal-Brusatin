@@ -1,3 +1,14 @@
 body {
     background-color: aquamarine;
 }
+.visible {
+    display: block;
+}
+.invisible {
+    display: none;
+}
+
+
+.presion {
+    background-color: red;
+}
