@@ -1,14 +1,150 @@
 body {
     background-color: aquamarine;
 }
-.visible {
-    display: block;
-}
-.invisible {
-    display: none;
+
+.letter {
+    width: 30px;
+    color: black;
 }
 
 
-.presion {
+#tablero {
+    display: grid;
+    grid-template: 
+    "titulo titulo" auto
+    "imagen vidas" 15%
+    "imagen palabra" auto
+    "imagen letras" auto/30% 70%;
+    margin: 5vw;
+}
+#title {
+    grid-area: titulo;
+    text-align: center;
+}
+#imagen {
+    grid-area: imagen;
+}
+#lifes {
+    grid-area: vidas;
+    text-align: center;
+}
+#lifes p {
+    margin-top: 1rem;
+}
+#word-in-game {
+    grid-area: palabra;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#letters {
+    grid-area: letras;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid black;
+}
+.letter {
+    margin: 3px 2px;
+}
+
+
+.letras {
+    width: 35px;
+    height: 35px;
+    margin: 2px;
+    background-color: white;
+    border: solid 2px black;
+    text-align: center;
+    font-size: larger;
+}
+
+
+svg {
+    stroke: black;
+    stroke-width: 3px;
+}
+
+#names {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+}
+#names>* {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0px;
+    /* margin: ; */
+}
+#names>* label {
+    padding-left: 3px;
+    margin-right: 3px;
+}
+.no-ok *, .fallo {
     background-color: red;
+    color: white;
+}
+.ok *, .acierto {
+    background-color: green;
+    color: white;
+}
+
+#saveNames {
+    width: 100%;
+}
+
+#rulesButton {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+}
+
+#puntajes button {
+    width: 100%;
+}
+
+tr * {
+    text-align: center;
+}
+tr .name {
+    text-align: left;
+}
+
+.dropdown-center .dropdown-menu {
+    min-width: 50vw;
+}
+.dropup .dropdown-menu {
+    min-width: 60vw;
+}
+
+@media screen and (max-width: 768px) {
+    #tablero {
+        grid-template: 
+        "titulo" auto
+        "vidas" auto
+        "imagen" auto
+        "palabra" auto
+        "letras" auto;
+        margin: 3px;
+    }
+    #imagen {
+        display: flex;
+        justify-content: center;
+    }
+    #imagen svg{
+        height: 45vh;
+    }
+    #word-in-game {
+        margin: 10px 0px;
+    }
+    #letters {
+        padding: 10px 0px;
+    }
+    .dropup .dropdown-menu {
+        width: 100vw;
+    }
+    
 }

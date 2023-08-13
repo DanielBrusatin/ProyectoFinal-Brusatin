@@ -4,54 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ahorcado</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-  <h1>¡¡¡Bienvenido/s al juego del AHORCADO!!!</h1>
-  <div id="rules">
-    <h2>Reglas</h2>
-    <p>Puedes jugar solo o con amigos.</p>
-    <p>En modo multijugador la palabra puede ser ingresada por un adversario o puede ser una palabra ya guardada.</p>
-    <p>Los jugadores cuentan con 6 vidas para adivinar la palabra secreta.</p>
-    <p>Cada letra que se ingrese y no aparezca en la palabra restará una vida.</p>
-    <p>Si se pierden todas las vidas termina el turno de ese jugador sin sumar puntos.</p>
-    <p>Si la palabra es adivinada se le sumarán al jugador tantos puntos como vidas restantes posea.</p>
+  <div class="dropup d-none" id="rulesButton">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Reglas
+    </button>
+    <div class="dropdown-menu p-4 text-body-secondary">
+        <p>Puedes jugar solo o con amigos.</p>
+        <p>En modo multijugador la palabra puede ser ingresada por un adversario o puede ser una palabra ya guardada.</p>
+        <p>Los jugadores cuentan con 6 vidas para adivinar la palabra secreta.</p>
+        <p>Cada letra que se ingrese y no aparezca en la palabra restará una vida.</p>
+        <p>Si se pierden todas las vidas termina el turno de ese jugador sin sumar puntos.</p>
+        <p>Si la palabra es adivinada se le sumarán al jugador tantos puntos como vidas restantes posea.</p>
+      </div>
+    </ul>
+  </div>
+
+  <div class="dropdown-center d-none" id="puntajes">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Tabla de posiciones
+    </button>
+    <div class="dropdown-menu">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Jugadas</th>
+            <th scope="col">Puntaje</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      </div>
+    </ul>
+  </div>
+  <main>
+    <h1>¡¡¡Bienvenido/s al juego del AHORCADO!!!</h1>
+    <div id="rules">
+      <h2>Reglas</h2>
+      <ul>
+        <li>Puedes jugar solo o con amigos.</li>
+        <li>En modo multijugador la palabra puede ser ingresada por un adversario o puede ser una palabra ya guardada.</li>
+        <li>Los jugadores cuentan con 6 vidas para adivinar la palabra secreta.</li>
+        <li>Cada letra que se ingrese y no aparezca en la palabra restará una vida.</li>
+        <li>Si se pierden todas las vidas termina el turno de ese jugador sin sumar puntos.</li>
+        <li>Si la palabra es adivinada se le sumarán al jugador tantos puntos como vidas restantes posea.</li>
+      </ul>
+    </div>
     <form id="numberofplayers">
       <label for="players">¿Cuantas personas jugarán?</label>
       <input type="number" name="players" id="players" required min="1" max="10" value="1">
       <button id="start">Comenzar a jugar</button>
     </form>
-  </div>
-  <form id="names">
-  </form>
-  <button class="letter">A</button>
-  <button class="letter">B</button>
-  <button class="letter">C</button>
-  <button class="letter">D</button>
-  <button class="letter">E</button>
-  <button class="letter">F</button>
-  <button class="letter">G</button>
-  <button class="letter">H</button>
-  <button class="letter">I</button>
-  <button class="letter">J</button>
-  <button class="letter">K</button>
-  <button class="letter">L</button>
-  <button class="letter">M</button>
-  <button class="letter">N</button>
-  <button class="letter">O</button>
-  <button class="letter">P</button>
-  <button class="letter">Q</button>
-  <button class="letter">R</button>
-  <button class="letter">S</button>
-  <button class="letter">T</button>
-  <button class="letter">U</button>
-  <button class="letter">V</button>
-  <button class="letter">W</button>
-  <button class="letter">X</button>
-  <button class="letter">Y</button>
-  <button class="letter">Z</button>
-
-  <script src="./js/principal.js"></script>
+    <form id="names">
+    </form>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.22/dist/sweetalert2.all.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script src="./js/main.js"></script>
 </body>
 </html>
+
+
+

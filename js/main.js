@@ -1,168 +1,442 @@
 /*************/
 /* Variables */
 /*************/
-//const listaPalabras = ["ABANDONADO", "ABANDONAR", "ABASTECER", "ABATIDO", "ABDOMEN", "ABERTURA", "ABOGADO", "ABORTAR", "ABRASIVO", "ABSORBER", "ABSTENER", "ABUELA", "ACANTILADO", "ACELERAR", "ACENTUAR", "ACEPTAR", "ACERTIJO", "ACIERTO", "ACLARAR", "ACOMODAR", "ACONSEJAR", "ACORDEON", "ACOSTAR", "ACTIVIDAD", "ACTUALIZAR", "ADELANTE", "ADICTO", "ADIESTRAR", "ADOPCION", "ADORABLE", "ADORNAR", "ADUANA", "ADULTO", "AFECTAR", "AFICIONADO", "AFRICANO", "AGILIDAD", "AGONIA", "AGOTADO", "AGRACIADO", "AGRADECIDO", "AGREGAR", "AGRICULTOR", "AGUJERO", "AHOGADO", "AHORRAR", "AIREADO", "AJUSTAR", "ALCANZAR", "ALEGRIA", "ALENTAR", "ALMACENAR", "ALMOHADA", "ALQUILAR", "ALTERAR", "ALUMNO", "AMABLE", "AMARILLO", "AMBIENTAL", "AMISTAD", "AMOROSO", "ANALIZAR", "ANCIANO", "ANDAMIO", "ANFITRION", "ANGUSTIA", "ANIMAL", "ANOTAR", "ANSIEDAD", "ANTENA", "ANTIGUO", "ANUNCIAR", "APARECER", "APARIENCIA", "APASIONADO", "APLAUDIR", "APLICAR", "APODERADO", "APRENDER", "APROBAR", "APROVECHAR", "APROXIMAR", "AQUEJAR", "ARANDANO", "ARBOLADO", "ARCHIVO", "ARGENTINO", "ARMONIA", "ARQUITECTO", "ARREGLAR", "ARRIESGAR", "ARROJAR", "ARTISTICO", "ASAMBLEA", "ASCENDER", "ASESORAR", "ASFIXIAR", "ASIENTO", "ASOCIAR", "ASOMBRAR", "ASPIRAR", "ASUSTAR", "ATAQUE", "ATENDER", "ATERRIZAR", "ATLETA", "ATMOSFERA", "ATREVERSE", "AUMENTAR", "AUTORIDAD", "AVENTURA", "AVERGONZAR", "AYUDAR", "AZOTAR", "BACTERIA", "BAILARIN", "BANDERAS", "BARAJA", "BARRIGA", "BASTANTE", "BATERIA", "BELLEZA", "BENDICION", "BENEFICIO", "BIBLIOTECA", "BIENESTAR", "BIOLOGIA", "BOHEMIO", "BOLIGRAFO", "BOMBERO", "BOTELLA", "BOXEADOR", "BUSQUEDA", "CABALLERO", "CABALLO", "CABELLO", "CACEROLA", "CACHORRO", "CALCULAR", "CALIDAD", "CALORIA", "CALZADO", "CAMARA", "CAMBIAR", "CAMINO", "CAMPEONATO", "CANTIDAD", "CAPACIDAD", "CAPITULO", "CAPTURAR", "CARACTER", "CARAMELIZADO", "CARAMELO", "CARICIA", "CARPETA", "CARRETA", "CASTIGAR", "CATASTROFE", "CAUSAR", "CELEBRAR", "CELULA", "CEPILLO", "CEREBRO", "CERRAR", "CHAMAN", "CHAMARRA", "CHAPUZON", "CHIFLADO", "CHISME", "CHOCAR", "CHUPAR", "CICATRIZ", "CIENTIFICO", "CILINDRO", "CINEASTA", "CINTURA", "CIRCUITO", "CIUDAD", "CLAMAR", "CLINICA", "COCINAR", "COHETE", "COLINA", "COLLAR", "COLONIA", "COMANDO", "COMEDIA", "COMENZAR", "COMIDA", "COMODIDAD", "COMODO", "COMPRAR", "CONCEBIR", "CONCEPTO", "CONCIERTO", "CONCLUSION", "CONCURSO", "CONDICION", "CONECTAR", "CONFESAR", "CONFIANZA", "CONFLICTO", "CONFORT", "CONGELAR", "CONOCER", "CONQUISTA", "CONSEGUIR", "CONSENTIR", "CONSOLAR", "CONSTRUIR", "CONSUMIR", "CONTACTO", "CONTENER", "CONTINUAR", "CONTROLAR", "CONVENCER", "CORAZON", "COSTUMBRE", "CREPUSCULO", "CRIANZA", "CRISTAL", "CRUCERO", "CRUCIAL", "CRUELDAD", "CUADERNO", "CUADRO", "CUARTO", "CUATRO", "CUCHARA", "CUCHILLO", "CUERDA", "CUESTA", "CULTIVAR", "CULTURA", "CUMBRE", "CUMPLIR", "CUPULA", "CURIOSO", "CUSPIDE", "DECENTE", "DECIDIDO", "DECIDIR", "DECLARAR", "DECODIFICAR", "DECOLORAR", "DECORAR", "DECORO", "DECRETO", "DEFENSA", "DEFINIR", "DEFRAUDAR", "DEGRADAR", "DELANTE", "DELANTERO", "DELEITE", "DELGADO", "DELICIOSO", "DEMANDAR", "DEMOCRACIA", "DEMORAR", "DENTRO", "DENUNCIAR", "DEPENDER", "DEPORTAR", "DEPORTISTA", "DERECHO", "DERIVAR", "DERRAMAR", "DERRETIR", "DESAFIO", "DESFILE", "DESGARRAR", "DESGASTE", "DESGLOSAR", "DESHACER", "DESIERTO", "DESLIZAR", "DESMAYAR", "DESNUDO", "DESPERTAR", "DESTACAR", "DESTINO", "DESVELAR", "DETALLE", "DETECTAR", "DEVOLVER", "DEVORAR", "DIBUJAR", "DIFICIL", "DIFUNDIR", "DIGITAL", "DILIGENTE", "DIMENSION", "DINERO", "DIRIGIR", "DISCUTIR", "DISFRUTAR", "DISOLVER", "DISPARAR", "DISPONER", "DISTANCIA", "DISTINTO", "DIVERSION", "DIVERSO", "DIVERTIDO", "DIVIDIR", "DOBLAR", "DOLOROSO", "DOMINAR", "DORADO", "DURADERO", "DURAZNO", "EFECTIVO", "EFECTO", "EGOISTA", "EJECUTAR", "EJEMPLO", "ELECCION", "ELEFANTE", "ELEGANTE", "ELIMINAR", "ELUDIR", "EMBARCAR", "EMBARGO", "EMOCION", "EMPACAR", "EMPAPAR", "EMPATAR", "EMPRENDER", "ENAMORADO", "ENAMORAR", "ENCENDER", "ENCOMENDAR", "ENCONTRAR", "ENCUESTA", "ENDULZAR", "ENDURECER", "ENEMIGO", "ENERGIA", "ENFOCAR", "ENIGMA", "ENJUAGAR", "ENLOQUECER", "ENORME", "ENREDAR", "ENSUCIAR", "ENTENDER", "ENTREGAR", "ENTRENAR", "ENVOLVER", "ENZARZAR", "ERRORES", "ERUPCION", "ESCALERA", "ESCAPAR", "ESCONDER", "ESCRIBIR", "ESCRITOR", "ESCRITORIO", "ESCUCHAR", "ESFERA", "ESGRIMA", "ESPEJO", "ESPERANZA", "ESQUINA", "ESTACION", "ESTADO", "ESTATURA", "ESTILO", "ESTIRAR", "ESTOMAGO", "ESTUDIAR", "ETIQUETA", "EUFORIA", "EUROPA", "EVALUACION", "EVENTO", "EXACTO", "EXAMEN", "EXCESO", "EXCUSA", "EXHALAR", "EXIGENTE", "EXISTIR", "EXOTICO", "EXPERIMENTO", "EXPLICAR", "EXPLORAR", "EXPONER", "EXTENDER", "EXTRAER", "EXTRAVIAR", "FABRICAR", "FABULA", "FACTOR", "FALLECER", "FAMILIA", "FANTASMA", "FANTASTICO", "FARAON", "FASCINANTE", "FAVORITO", "FELICIDAD", "FESTEJAR", "FESTEJO", "FILTRAR", "FINALIZAR", "FINANCIAR", "FLAMENCO", "FOMENTAR", "FORJAR", "FORMAR", "FORTALEZA", "FOTOGRAFIA", "FRAGANCIA", "FRASCO", "FRENTE", "FRUNCIR", "FUNCIONAR", "FUNDAR", "FURIOSO", "FUTBOL", "FUTURO", "GABARDINA", "GALAXIA", "GALERIA", "GANADOR", "GARANTIA", "GARGANTA", "GASTAR", "GENERAR", "GENEROSO", "GIGANTE", "GIRASOL", "GITANO", "GLORIOSO", "GOBERNAR", "GOBIERNO", "GOLPEAR", "GORGOTEO", "GOURMET", "GRADUAR", "GRANIZO", "GRISACEO", "GRUESO", "GUARDAR", "GUERRA", "GUITARRA", "GUSTAR", "HABILIDAD", "HABITAR", "HABITO", "HABLAR", "HALCON", "HALLAZGO", "HAMBRE", "HARINA", "HECHIZO", "HERMOSO", "HERRAMIENTA", "HIGIENE", "HISTORIA", "HOCICO", "HOLGADO", "HOMBRE", "HONESTO", "HORMIGA", "HORROR", "HOSPITAL", "HUELGA", "HUELLA", "HUERTO", "HUMANIDAD", "HUMEDAD", "HUMILDE", "HUNDIR", "HURACAN", "HURGAR", "IDENTIFICAR", "IDIOMA", "IGNORAR", "ILUSION", "IMAGEN", "IMAGINAR", "IMITAR", "IMPACTO", "IMPEDIR", "IMPERIO", "IMPLORAR", "IMPONER", "IMPORTAR", "IMPRESIONANTE", "IMPRIMIR", "IMPROVISAR", "IMPULSAR", "IMPULSO", "INCENDIO", "INCLUIR", "INDICAR", "INDIVIDUO", "INFANCIA", "INFLUIR", "INFORMAR", "INGENIO", "INGRESAR", "INICIAR", "INMENSIDAD", "INMIGRAR", "INMORTAL", "INQUIETO", "INSISTIR", "INSOMNIO", "INSTANTE", "INSTRUIR", "INTEGRAR", "INTEGRO", "INTENSO", "INTENTAR", "INTERCAMBIAR", "INTERES", "INTERNO", "INTIMAR", "INTUIR", "INUNDAR", "INVENTAR", "INVERTIR", "INVESTIGAR", "INVIERNO", "INVITAR", "IRONICO", "ITALIANO", "JARDIN", "JIRAFA", "JOYERIA", "JUEVES", "JUGADOR", "JUICIOSO", "JUNTOS", "JURADO", "JUSTICIA", "JUVENTUD", "KILOGRAMO", "KILOMETRO", "KILOVATIO", "LABERINTO", "LADRON", "LAGRIMA", "LAGUNA", "LAMENTAR", "LAMPARA", "LANZAR", "LAPICERO", "LAVABO", "LEALTAD", "LECTOR", "LEGADO", "LEGUMBRE", "LENGUA", "LEYENDA", "LIBERTAD", "LIBRERIA", "LICENCIA", "LIMITE", "LIMPIAR", "LINTERNA", "LIQUIDO", "LLEGADA", "LLUVIA", "LOGICA", "LONCHERA", "LONGITUD", "LUCHAR", "LUMINARIA", "LUMINOSIDAD", "LUMINOSO", "MADERA", "MALDAD", "MALVADO", "MAQUINA", "MARAVILLA", "MARAVILLOSO", "MARCAR", "MARCHA", "MARGARITA", "MARGEN", "MARIDO", "MARIPOSA", "MARTILLO", "MASAJE", "MASCAR", "MASCOTA", "MATERIA", "MATRIMONIO", "MAXIMO", "MECEDORA", "MEDICINA", "MEJILLA", "MEJORAR", "MELENA", "MELODIA", "MEMORIA", "MENTIR", "MERIENDA", "MERMELADA", "METEORITO", "MIGRAR", "MILAGRO", "MINIMO", "MIRADA", "MISTERIO", "MOCHILA", "MODULO", "MOLESTAR", "MOLINO", "MOMENTO", "MONEDA", "MORADA", "MOROSO", "MOSAICO", "MOTIVO", "MOVIMIENTO", "MUCHACHO", "MULTIPLE", "MURALLA", "MURMULLO", "MUSCULO", "MUSICA", "NACION", "NARANJA", "NATACION", "NATURALEZA", "NAVEGADOR", "NAVEGAR", "NECESITAR", "NERVIOSO", "NITIDO", "NOBLEZA", "NOCIVO", "NOMADA", "NOSTALGIA", "NOTICIA", "NOVATO", "NOVELA", "NUCLEO", "NUMERO", "NUTRIR", "OBEDECER", "OBISPO", "OBJETO", "OBLIGAR", "OBSERVAR", "OCASION", "OCASIONAL", "OCEANO", "OCULTAR", "OCUPAR", "OFENDER", "OFERTA", "OFICINA", "OMITIR", "ONEROSO", "OPINAR", "OPONER", "OPORTUNIDAD", "OPUESTO", "ORACION", "ORGULLO", "ORIENTE", "ORQUESTA", "OSCURO", "OVACION", "PAJARO", "PALABRA", "PALIDO", "PALOMA", "PALPITAR", "PANADERIA", "PANCARTA", "PANICO", "PANTALLA", "PANTALON", "PAQUETE", "PARACAIDAS", "PARAGUAS", "PAREJA", "PARIENTE", "PARQUE", "PARTIR", "PASAPORTE", "PASILLO", "PASION", "PASTOR", "PATENTE", "PATINAR", "PATRIA", "PATRON", "PEATON", "PECADO", "PEGAJOSO", "PEINADO", "PELICULA", "PELIGRO", "PELOTA", "PENOSO", "PENSAR", "PERDER", "PERFORAR", "PERICO", "PERMISO", "PERSONAL", "PERTENECER", "PESADO", "PETALO", "PETROLEO", "PIERNA", "PIJAMA", "PIMIENTA", "PINTURA", "PIRATA", "PIZARRA", "PLANTA", "PLURAL", "PODRIDO", "POESIA", "POLITICA", "POLIZA", "POMADA", "POMELO", "PORCION", "PORDIOSERO", "PORQUE", "PORTON", "POSIBLE", "POSTAL", "POSTRE", "POTENCIA", "PRACTICA", "PRACTICO", "PRADERA", "PREGUNTA", "PRESENTAR", "PRESION", "PREVENIR", "PRINCESA", "PRISION", "PRIVADO", "PROBLEMA", "PROCESO", "PRODUCTO", "PROFESOR", "PROGRAMA", "PROGRESO", "PROHIBIR", "PROMESA", "PRONUNCIAR", "PROPIO", "PROTEGER", "PROYECTO", "PRUEBA", "PUBLICAR", "PUEBLO", "PUERRO", "PUERTA", "PUESTO", "PUPILA", "PUREZA", "PURGAR", "PURIFICAR", "QUEBRAR", "QUEMAR", "QUERIDO", "QUIETO", "QUIMICA", "QUINCE", "QUINTO", "QUIROFANO", "QUISIERA", "QUISQUILLOSO", "RAPIDO", "RASTRO", "RECETA", "RECOGER", "RECUERDO", "REDONDO", "REEMPLAZAR", "REFLEJAR", "REFUGIO", "REGALAR", "REGRESO", "RELEVAR", "REMEDIO", "REMOLQUE", "RENOVAR", "REPARAR", "REPETIR", "REPOSAR", "REPUGNANTE", "RESCATE", "RESERVAR", "RESFRIADO", "RESIDIR", "RESPETO", "RESPLANDECIENTE", "RESPLANDOR", "RESTAURANTE", "RESULTAR", "RETIRAR", "RIESGO", "RIQUEZA", "RODEAR", "ROSQUILLA", "ROSTRO", "RUBORIZAR", "SABADO", "SACERDOTE", "SAGRADO", "SALADO", "SALIDA", "SALIVA", "SALMON", "SALTAR", "SALUDAR", "SALUDO", "SALVAJE", "SANDWICH", "SANGRE", "SANIDAD", "SATISFACCION", "SECRETARIO", "SECTOR", "SECUELA", "SEDUCIR", "SEDUCTOR", "SENSIBLE", "SENTIDO", "SEPARAR", "SEPTIEMBRE", "SERAFIN", "SERPIENTE", "SERRAR", "SIMBOLO", "SINCERIDAD", "SINFONIA", "SINTOMA", "SINTONIZAR", "SISTEMA", "SOBERANO", "SOBERBIO", "SOBORNO", "SOBRADO", "SOBREMESA", "SOBREVENIR", "SOBREVIVIR", "SOBRINA", "SOCIEDAD", "SOCORRO", "SODOMIA", "SOLAMENTE", "SOLDADO", "SOLEDAD", "SOLICITAR", "SOLIDARIO", "SOLIDO", "SOLITARIO", "SOLUCION", "SOMBRA", "SOMBRERO", "SOMETER", "SONAMBULO", "SONDAR", "SONIDO", "SONRIENTE", "SONRISA", "SOPLAR", "SOPRANO", "SORDERA", "SORPRENDENTE", "SORPRENDIDO", "SORPRESA", "SORTEAR", "SOSPECHA", "SOSTENIBLE", "SOTANO", "SUAVIZAR", "SUBIDA", "SUBLIME", "SUBRAYAR", "SUCEDER", "SUFICIENTE", "SUFRIMIENTO", "SUJETAR", "SUMERGIR", "SUNTUOSO", "SUPERAR", "SUPERVIVENCIA", "SUPONER", "SUPUESTO", "SURCAR", "SURTIDO", "SUSPENSO", "SUSPIRAR", "SUSTANCIA", "SUSTENTO", "SUSTITUIR", "SUTILIDAD", "TABACO", "TACITURNO", "TALENTO", "TALLER", "TANQUE", "TARDANZA", "TARJETA", "TATUAJE", "TEATRO", "TECNOLOGIA", "TEDIOSO", "TEMBLOR", "TEMPORAL", "TENTACION", "TERNERO", "TERNURA", "TERRIBLE", "TERRITORIO", "TESTIGO", "TIERNO", "TIJERAS", "TIMIDO", "TIPICO", "TIRANO", "TOLERAR", "TOMATE", "TORCER", "TORTUGA", "TOTALIDAD", "TOXICO", "TRABAJO", "TRAGEDIA", "TRAMITE", "TRAMPA", "TRANCE", "TRANQUILO", "TRANSPORTE", "TRASCENDER", "TRASLADAR", "TRATADO", "TRAUMA", "TRAVESIA", "TREINTA", "TRIANGULO", "TRISTEZA", "TRIVIAL", "TRONCO", "TROPIEZO", "TRUENO", "TUERTO", "TURISMO", "ULTIMO", "UNICIDAD", "UNIDAD", "VACACION", "VAGABUNDO", "VAGANCIA", "VALIENTE", "VALORAR", "VASTAGO", "VEGETAL", "VELERO", "VENCER", "VENDEDOR", "VENTAJA", "VERANO", "VERDAD", "VERIFICAR", "VERTIGO", "VESTIDO", "VETERANO", "VICTIMA", "VIDRIO", "VIENTO", "VIGILAR", "VINCULO", "VIOLIN", "VIRGEN", "VIRTUD", "VISUAL", "VITALIDAD", "VIVIENDA", "VOLCAN", "VOLUMEN", "VOLVER", "VOMITO", "VULNERABLE", "XILOFONO", "YACIMIENTO", "ZAFIRO", "ZAPATO", "ZODIACO", "ZOOLOGICO", "ZUMBIDO", "ZURDOS"];
-// let palabraElegida; //Palabra a adivinar
-// let palabraAdivinada; //Palabra que se va a ir formando
-// let largoPalabra; //Largo de la palabra
-// let vidas; //Vidas en juego
-// let aciertos; //Contador de letras acertadas
-let letraIngresada; //Letra ingresada en cada iteración
-let letrasPedidas; //Letras que ya fueron ingresadas
-let seguirJugando; //Booleano para jugar otra ronda
-const letrasValidas = /[a-zA-Z]/; //Expresion para verificar si se ingresa una letra valida
+const listaPalabras = ["ABANDONADO", "ABANDONAR", "ABASTECER", "ABATIDO", "ABDOMEN", "ABERTURA", "ABOGADO", "ABORTAR", "ABRASIVO", "ABSORBER", "ABSTENER", "ABUELA", "ACANTILADO", "ACELERAR", "ACENTUAR", "ACEPTAR", "ACERTIJO", "ACIERTO", "ACLARAR", "ACOMODAR", "ACONSEJAR", "ACORDEON", "ACOSTAR", "ACTIVIDAD", "ACTUALIZAR", "ADELANTE", "ADICTO", "ADIESTRAR", "ADOPCION", "ADORABLE", "ADORNAR", "ADUANA", "ADULTO", "AFECTAR", "AFICIONADO", "AFRICANO", "AGILIDAD", "AGONIA", "AGOTADO", "AGRACIADO", "AGRADECIDO", "AGREGAR", "AGRICULTOR", "AGUJERO", "AHOGADO", "AHORRAR", "AIREADO", "AJUSTAR", "ALCANZAR", "ALEGRIA", "ALENTAR", "ALMACENAR", "ALMOHADA", "ALQUILAR", "ALTERAR", "ALUMNO", "AMABLE", "AMARILLO", "AMBIENTAL", "AMISTAD", "AMOROSO", "ANALIZAR", "ANCIANO", "ANDAMIO", "ANFITRION", "ANGUSTIA", "ANIMAL", "ANOTAR", "ANSIEDAD", "ANTENA", "ANTIGUO", "ANUNCIAR", "APARECER", "APARIENCIA", "APASIONADO", "APLAUDIR", "APLICAR", "APODERADO", "APRENDER", "APROBAR", "APROVECHAR", "APROXIMAR", "AQUEJAR", "ARANDANO", "ARBOLADO", "ARCHIVO", "ARGENTINO", "ARMONIA", "ARQUITECTO", "ARREGLAR", "ARRIESGAR", "ARROJAR", "ARTISTICO", "ASAMBLEA", "ASCENDER", "ASESORAR", "ASFIXIAR", "ASIENTO", "ASOCIAR", "ASOMBRAR", "ASPIRAR", "ASUSTAR", "ATAQUE", "ATENDER", "ATERRIZAR", "ATLETA", "ATMOSFERA", "ATREVERSE", "AUMENTAR", "AUTORIDAD", "AVENTURA", "AVERGONZAR", "AYUDAR", "AZOTAR", "BACTERIA", "BAILARIN", "BANDERAS", "BARAJA", "BARRIGA", "BASTANTE", "BATERIA", "BELLEZA", "BENDICION", "BENEFICIO", "BIBLIOTECA", "BIENESTAR", "BIOLOGIA", "BOHEMIO", "BOLIGRAFO", "BOMBERO", "BOTELLA", "BOXEADOR", "BUSQUEDA", "CABALLERO", "CABALLO", "CABELLO", "CACEROLA", "CACHORRO", "CALCULAR", "CALIDAD", "CALORIA", "CALZADO", "CAMARA", "CAMBIAR", "CAMINO", "CAMPEONATO", "CANTIDAD", "CAPACIDAD", "CAPITULO", "CAPTURAR", "CARACTER", "CARAMELIZADO", "CARAMELO", "CARICIA", "CARPETA", "CARRETA", "CASTIGAR", "CATASTROFE", "CAUSAR", "CELEBRAR", "CELULA", "CEPILLO", "CEREBRO", "CERRAR", "CHAMAN", "CHAMARRA", "CHAPUZON", "CHIFLADO", "CHISME", "CHOCAR", "CHUPAR", "CICATRIZ", "CIENTIFICO", "CILINDRO", "CINEASTA", "CINTURA", "CIRCUITO", "CIUDAD", "CLAMAR", "CLINICA", "COCINAR", "COHETE", "COLINA", "COLLAR", "COLONIA", "COMANDO", "COMEDIA", "COMENZAR", "COMIDA", "COMODIDAD", "COMODO", "COMPRAR", "CONCEBIR", "CONCEPTO", "CONCIERTO", "CONCLUSION", "CONCURSO", "CONDICION", "CONECTAR", "CONFESAR", "CONFIANZA", "CONFLICTO", "CONFORT", "CONGELAR", "CONOCER", "CONQUISTA", "CONSEGUIR", "CONSENTIR", "CONSOLAR", "CONSTRUIR", "CONSUMIR", "CONTACTO", "CONTENER", "CONTINUAR", "CONTROLAR", "CONVENCER", "CORAZON", "COSTUMBRE", "CREPUSCULO", "CRIANZA", "CRISTAL", "CRUCERO", "CRUCIAL", "CRUELDAD", "CUADERNO", "CUADRO", "CUARTO", "CUATRO", "CUCHARA", "CUCHILLO", "CUERDA", "CUESTA", "CULTIVAR", "CULTURA", "CUMBRE", "CUMPLIR", "CUPULA", "CURIOSO", "CUSPIDE", "DECENTE", "DECIDIDO", "DECIDIR", "DECLARAR", "DECODIFICAR", "DECOLORAR", "DECORAR", "DECORO", "DECRETO", "DEFENSA", "DEFINIR", "DEFRAUDAR", "DEGRADAR", "DELANTE", "DELANTERO", "DELEITE", "DELGADO", "DELICIOSO", "DEMANDAR", "DEMOCRACIA", "DEMORAR", "DENTRO", "DENUNCIAR", "DEPENDER", "DEPORTAR", "DEPORTISTA", "DERECHO", "DERIVAR", "DERRAMAR", "DERRETIR", "DESAFIO", "DESFILE", "DESGARRAR", "DESGASTE", "DESGLOSAR", "DESHACER", "DESIERTO", "DESLIZAR", "DESMAYAR", "DESNUDO", "DESPERTAR", "DESTACAR", "DESTINO", "DESVELAR", "DETALLE", "DETECTAR", "DEVOLVER", "DEVORAR", "DIBUJAR", "DIFICIL", "DIFUNDIR", "DIGITAL", "DILIGENTE", "DIMENSION", "DINERO", "DIRIGIR", "DISCUTIR", "DISFRUTAR", "DISOLVER", "DISPARAR", "DISPONER", "DISTANCIA", "DISTINTO", "DIVERSION", "DIVERSO", "DIVERTIDO", "DIVIDIR", "DOBLAR", "DOLOROSO", "DOMINAR", "DORADO", "DURADERO", "DURAZNO", "EFECTIVO", "EFECTO", "EGOISTA", "EJECUTAR", "EJEMPLO", "ELECCION", "ELEFANTE", "ELEGANTE", "ELIMINAR", "ELUDIR", "EMBARCAR", "EMBARGO", "EMOCION", "EMPACAR", "EMPAPAR", "EMPATAR", "EMPRENDER", "ENAMORADO", "ENAMORAR", "ENCENDER", "ENCOMENDAR", "ENCONTRAR", "ENCUESTA", "ENDULZAR", "ENDURECER", "ENEMIGO", "ENERGIA", "ENFOCAR", "ENIGMA", "ENJUAGAR", "ENLOQUECER", "ENORME", "ENREDAR", "ENSUCIAR", "ENTENDER", "ENTREGAR", "ENTRENAR", "ENVOLVER", "ENZARZAR", "ERRORES", "ERUPCION", "ESCALERA", "ESCAPAR", "ESCONDER", "ESCRIBIR", "ESCRITOR", "ESCRITORIO", "ESCUCHAR", "ESFERA", "ESGRIMA", "ESPEJO", "ESPERANZA", "ESQUINA", "ESTACION", "ESTADO", "ESTATURA", "ESTILO", "ESTIRAR", "ESTOMAGO", "ESTUDIAR", "ETIQUETA", "EUFORIA", "EUROPA", "EVALUACION", "EVENTO", "EXACTO", "EXAMEN", "EXCESO", "EXCUSA", "EXHALAR", "EXIGENTE", "EXISTIR", "EXOTICO", "EXPERIMENTO", "EXPLICAR", "EXPLORAR", "EXPONER", "EXTENDER", "EXTRAER", "EXTRAVIAR", "FABRICAR", "FABULA", "FACTOR", "FALLECER", "FAMILIA", "FANTASMA", "FANTASTICO", "FARAON", "FASCINANTE", "FAVORITO", "FELICIDAD", "FESTEJAR", "FESTEJO", "FILTRAR", "FINALIZAR", "FINANCIAR", "FLAMENCO", "FOMENTAR", "FORJAR", "FORMAR", "FORTALEZA", "FOTOGRAFIA", "FRAGANCIA", "FRASCO", "FRENTE", "FRUNCIR", "FUNCIONAR", "FUNDAR", "FURIOSO", "FUTBOL", "FUTURO", "GABARDINA", "GALAXIA", "GALERIA", "GANADOR", "GARANTIA", "GARGANTA", "GASTAR", "GENERAR", "GENEROSO", "GIGANTE", "GIRASOL", "GITANO", "GLORIOSO", "GOBERNAR", "GOBIERNO", "GOLPEAR", "GORGOTEO", "GOURMET", "GRADUAR", "GRANIZO", "GRISACEO", "GRUESO", "GUARDAR", "GUERRA", "GUITARRA", "GUSTAR", "HABILIDAD", "HABITAR", "HABITO", "HABLAR", "HALCON", "HALLAZGO", "HAMBRE", "HARINA", "HECHIZO", "HERMOSO", "HERRAMIENTA", "HIGIENE", "HISTORIA", "HOCICO", "HOLGADO", "HOMBRE", "HONESTO", "HORMIGA", "HORROR", "HOSPITAL", "HUELGA", "HUELLA", "HUERTO", "HUMANIDAD", "HUMEDAD", "HUMILDE", "HUNDIR", "HURACAN", "HURGAR", "IDENTIFICAR", "IDIOMA", "IGNORAR", "ILUSION", "IMAGEN", "IMAGINAR", "IMITAR", "IMPACTO", "IMPEDIR", "IMPERIO", "IMPLORAR", "IMPONER", "IMPORTAR", "IMPRESIONANTE", "IMPRIMIR", "IMPROVISAR", "IMPULSAR", "IMPULSO", "INCENDIO", "INCLUIR", "INDICAR", "INDIVIDUO", "INFANCIA", "INFLUIR", "INFORMAR", "INGENIO", "INGRESAR", "INICIAR", "INMENSIDAD", "INMIGRAR", "INMORTAL", "INQUIETO", "INSISTIR", "INSOMNIO", "INSTANTE", "INSTRUIR", "INTEGRAR", "INTEGRO", "INTENSO", "INTENTAR", "INTERCAMBIAR", "INTERES", "INTERNO", "INTIMAR", "INTUIR", "INUNDAR", "INVENTAR", "INVERTIR", "INVESTIGAR", "INVIERNO", "INVITAR", "IRONICO", "ITALIANO", "JARDIN", "JIRAFA", "JOYERIA", "JUEVES", "JUGADOR", "JUICIOSO", "JUNTOS", "JURADO", "JUSTICIA", "JUVENTUD", "KILOGRAMO", "KILOMETRO", "KILOVATIO", "LABERINTO", "LADRON", "LAGRIMA", "LAGUNA", "LAMENTAR", "LAMPARA", "LANZAR", "LAPICERO", "LAVABO", "LEALTAD", "LECTOR", "LEGADO", "LEGUMBRE", "LENGUA", "LEYENDA", "LIBERTAD", "LIBRERIA", "LICENCIA", "LIMITE", "LIMPIAR", "LINTERNA", "LIQUIDO", "LLEGADA", "LLUVIA", "LOGICA", "LONCHERA", "LONGITUD", "LUCHAR", "LUMINARIA", "LUMINOSIDAD", "LUMINOSO", "MADERA", "MALDAD", "MALVADO", "MAQUINA", "MARAVILLA", "MARAVILLOSO", "MARCAR", "MARCHA", "MARGARITA", "MARGEN", "MARIDO", "MARIPOSA", "MARTILLO", "MASAJE", "MASCAR", "MASCOTA", "MATERIA", "MATRIMONIO", "MAXIMO", "MECEDORA", "MEDICINA", "MEJILLA", "MEJORAR", "MELENA", "MELODIA", "MEMORIA", "MENTIR", "MERIENDA", "MERMELADA", "METEORITO", "MIGRAR", "MILAGRO", "MINIMO", "MIRADA", "MISTERIO", "MOCHILA", "MODULO", "MOLESTAR", "MOLINO", "MOMENTO", "MONEDA", "MORADA", "MOROSO", "MOSAICO", "MOTIVO", "MOVIMIENTO", "MUCHACHO", "MULTIPLE", "MURALLA", "MURMULLO", "MUSCULO", "MUSICA", "NACION", "NARANJA", "NATACION", "NATURALEZA", "NAVEGADOR", "NAVEGAR", "NECESITAR", "NERVIOSO", "NITIDO", "NOBLEZA", "NOCIVO", "NOMADA", "NOSTALGIA", "NOTICIA", "NOVATO", "NOVELA", "NUCLEO", "NUMERO", "NUTRIR", "OBEDECER", "OBISPO", "OBJETO", "OBLIGAR", "OBSERVAR", "OCASION", "OCASIONAL", "OCEANO", "OCULTAR", "OCUPAR", "OFENDER", "OFERTA", "OFICINA", "OMITIR", "ONEROSO", "OPINAR", "OPONER", "OPORTUNIDAD", "OPUESTO", "ORACION", "ORGULLO", "ORIENTE", "ORQUESTA", "OSCURO", "OVACION", "PAJARO", "PALABRA", "PALIDO", "PALOMA", "PALPITAR", "PANADERIA", "PANCARTA", "PANICO", "PANTALLA", "PANTALON", "PAQUETE", "PARACAIDAS", "PARAGUAS", "PAREJA", "PARIENTE", "PARQUE", "PARTIR", "PASAPORTE", "PASILLO", "PASION", "PASTOR", "PATENTE", "PATINAR", "PATRIA", "PATRON", "PEATON", "PECADO", "PEGAJOSO", "PEINADO", "PELICULA", "PELIGRO", "PELOTA", "PENOSO", "PENSAR", "PERDER", "PERFORAR", "PERICO", "PERMISO", "PERSONAL", "PERTENECER", "PESADO", "PETALO", "PETROLEO", "PIERNA", "PIJAMA", "PIMIENTA", "PINTURA", "PIRATA", "PIZARRA", "PLANTA", "PLURAL", "PODRIDO", "POESIA", "POLITICA", "POLIZA", "POMADA", "POMELO", "PORCION", "PORDIOSERO", "PORQUE", "PORTON", "POSIBLE", "POSTAL", "POSTRE", "POTENCIA", "PRACTICA", "PRACTICO", "PRADERA", "PREGUNTA", "PRESENTAR", "PRESION", "PREVENIR", "PRINCESA", "PRISION", "PRIVADO", "PROBLEMA", "PROCESO", "PRODUCTO", "PROFESOR", "PROGRAMA", "PROGRESO", "PROHIBIR", "PROMESA", "PRONUNCIAR", "PROPIO", "PROTEGER", "PROYECTO", "PRUEBA", "PUBLICAR", "PUEBLO", "PUERRO", "PUERTA", "PUESTO", "PUPILA", "PUREZA", "PURGAR", "PURIFICAR", "QUEBRAR", "QUEMAR", "QUERIDO", "QUIETO", "QUIMICA", "QUINCE", "QUINTO", "QUIROFANO", "QUISIERA", "QUISQUILLOSO", "RAPIDO", "RASTRO", "RECETA", "RECOGER", "RECUERDO", "REDONDO", "REEMPLAZAR", "REFLEJAR", "REFUGIO", "REGALAR", "REGRESO", "RELEVAR", "REMEDIO", "REMOLQUE", "RENOVAR", "REPARAR", "REPETIR", "REPOSAR", "REPUGNANTE", "RESCATE", "RESERVAR", "RESFRIADO", "RESIDIR", "RESPETO", "RESPLANDECIENTE", "RESPLANDOR", "RESTAURANTE", "RESULTAR", "RETIRAR", "RIESGO", "RIQUEZA", "RODEAR", "ROSQUILLA", "ROSTRO", "RUBORIZAR", "SABADO", "SACERDOTE", "SAGRADO", "SALADO", "SALIDA", "SALIVA", "SALMON", "SALTAR", "SALUDAR", "SALUDO", "SALVAJE", "SANDWICH", "SANGRE", "SANIDAD", "SATISFACCION", "SECRETARIO", "SECTOR", "SECUELA", "SEDUCIR", "SEDUCTOR", "SENSIBLE", "SENTIDO", "SEPARAR", "SEPTIEMBRE", "SERAFIN", "SERPIENTE", "SERRAR", "SIMBOLO", "SINCERIDAD", "SINFONIA", "SINTOMA", "SINTONIZAR", "SISTEMA", "SOBERANO", "SOBERBIO", "SOBORNO", "SOBRADO", "SOBREMESA", "SOBREVENIR", "SOBREVIVIR", "SOBRINA", "SOCIEDAD", "SOCORRO", "SODOMIA", "SOLAMENTE", "SOLDADO", "SOLEDAD", "SOLICITAR", "SOLIDARIO", "SOLIDO", "SOLITARIO", "SOLUCION", "SOMBRA", "SOMBRERO", "SOMETER", "SONAMBULO", "SONDAR", "SONIDO", "SONRIENTE", "SONRISA", "SOPLAR", "SOPRANO", "SORDERA", "SORPRENDENTE", "SORPRENDIDO", "SORPRESA", "SORTEAR", "SOSPECHA", "SOSTENIBLE", "SOTANO", "SUAVIZAR", "SUBIDA", "SUBLIME", "SUBRAYAR", "SUCEDER", "SUFICIENTE", "SUFRIMIENTO", "SUJETAR", "SUMERGIR", "SUNTUOSO", "SUPERAR", "SUPERVIVENCIA", "SUPONER", "SUPUESTO", "SURCAR", "SURTIDO", "SUSPENSO", "SUSPIRAR", "SUSTANCIA", "SUSTENTO", "SUSTITUIR", "SUTILIDAD", "TABACO", "TACITURNO", "TALENTO", "TALLER", "TANQUE", "TARDANZA", "TARJETA", "TATUAJE", "TEATRO", "TECNOLOGIA", "TEDIOSO", "TEMBLOR", "TEMPORAL", "TENTACION", "TERNERO", "TERNURA", "TERRIBLE", "TERRITORIO", "TESTIGO", "TIERNO", "TIJERAS", "TIMIDO", "TIPICO", "TIRANO", "TOLERAR", "TOMATE", "TORCER", "TORTUGA", "TOTALIDAD", "TOXICO", "TRABAJO", "TRAGEDIA", "TRAMITE", "TRAMPA", "TRANCE", "TRANQUILO", "TRANSPORTE", "TRASCENDER", "TRASLADAR", "TRATADO", "TRAUMA", "TRAVESIA", "TREINTA", "TRIANGULO", "TRISTEZA", "TRIVIAL", "TRONCO", "TROPIEZO", "TRUENO", "TUERTO", "TURISMO", "ULTIMO", "UNICIDAD", "UNIDAD", "VACACION", "VAGABUNDO", "VAGANCIA", "VALIENTE", "VALORAR", "VASTAGO", "VEGETAL", "VELERO", "VENCER", "VENDEDOR", "VENTAJA", "VERANO", "VERDAD", "VERIFICAR", "VERTIGO", "VESTIDO", "VETERANO", "VICTIMA", "VIDRIO", "VIENTO", "VIGILAR", "VINCULO", "VIOLIN", "VIRGEN", "VIRTUD", "VISUAL", "VITALIDAD", "VIVIENDA", "VOLCAN", "VOLUMEN", "VOLVER", "VOMITO", "VULNERABLE", "XILOFONO", "YACIMIENTO", "ZAFIRO", "ZAPATO", "ZODIACO", "ZOOLOGICO", "ZUMBIDO", "ZURDOS"];
 const personaje = [
-  " ____\n |   |\n O   |\n/|\\  |\n/ \\  |\n     |\n   =====",
-  " ____\n |   |\n O   |\n/|\\  |\n/    |\n     |\n   =====",
-  " ____\n |   |\n O   |\n/|\\  |\n     |\n     |\n   =====",
-  " ____\n |   |\n O   |\n/|   |\n     |\n     |\n   =====",
-  " ____\n |   |\n O   |\n |   |\n     |\n     |\n   =====",
-  " ____\n |   |\n O   |\n     |\n     |\n     |\n   =====",
-  " ____\n |   |\n     |\n     |\n     |\n     |\n   ====="]; // Array con los dibujos segun la vida restante
-// let cantidadJugadores; // Cantidad de jugadores que van a jugar
-// const jugadores =[]; // Array con los jugadores 
-// class jugador {
-//   constructor (name) {
-//     this.nombre = name;
-//     this.puntaje = 0;
-//   }  
-// } // Clase para crear cada jugador
+  `<svg viewBox="0 0 155 190">
+    <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
+    <line class="gallows" x1="115" x2="115" y1="10" y2="35"/>
+    <line class="gallows" x1="105" x2="125" y1="35" y2="35"/>
+    <line class="gallows" x1="20" x2="20" y1="180" y2="10"/>
+    <line class="gallows" x1="50" x2="20" y1="10" y2="40"/>
+    <line class="gallows" x1="5" x2="35" y1="180" y2="180"/>
+    <line class="gallows" x1="10" x2="20" y1="180" y2="170"/>
+    <line class="gallows" x1="20" x2="30" y1="170" y2="180"/>
+    <circle id="head" cx="115" cy="55" r="15" fill="none"/>
+    <line id="body" x1="115" x2="115" y1="125" y2="70"/>
+    <line id="left-arm" x1="115" x2="80" y1="85" y2="75"/>
+    <line id="right-arm" x1="115" x2="150" y1="85" y2="75"/>
+    <line id="left-leg" x1="115" x2="85" y1="125" y2="160"/>
+    <line id="right-leg" x1="145" x2="115" y1="160" y2="125"/>
+  </svg>`,
+  `<svg viewBox="0 0 155 190">
+    <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
+    <line class="gallows" x1="115" x2="115" y1="10" y2="35"/>
+    <line class="gallows" x1="105" x2="125" y1="35" y2="35"/>
+    <line class="gallows" x1="20" x2="20" y1="180" y2="10"/>
+    <line class="gallows" x1="50" x2="20" y1="10" y2="40"/>
+    <line class="gallows" x1="5" x2="35" y1="180" y2="180"/>
+    <line class="gallows" x1="10" x2="20" y1="180" y2="170"/>
+    <line class="gallows" x1="20" x2="30" y1="170" y2="180"/>
+    <circle id="head" cx="115" cy="55" r="15" fill="none"/>
+    <line id="body" x1="115" x2="115" y1="125" y2="70"/>
+    <line id="left-arm" x1="115" x2="80" y1="85" y2="75"/>
+    <line id="right-arm" x1="115" x2="150" y1="85" y2="75"/>
+    <line id="left-leg" x1="115" x2="85" y1="125" y2="160"/>
+  </svg>`,
+  `<svg viewBox="0 0 155 190">
+    <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
+    <line class="gallows" x1="115" x2="115" y1="10" y2="35"/>
+    <line class="gallows" x1="105" x2="125" y1="35" y2="35"/>
+    <line class="gallows" x1="20" x2="20" y1="180" y2="10"/>
+    <line class="gallows" x1="50" x2="20" y1="10" y2="40"/>
+    <line class="gallows" x1="5" x2="35" y1="180" y2="180"/>
+    <line class="gallows" x1="10" x2="20" y1="180" y2="170"/>
+    <line class="gallows" x1="20" x2="30" y1="170" y2="180"/>
+    <circle id="head" cx="115" cy="55" r="15" fill="none"/>
+    <line id="body" x1="115" x2="115" y1="125" y2="70"/>
+    <line id="left-arm" x1="115" x2="80" y1="85" y2="75"/>
+    <line id="right-arm" x1="115" x2="150" y1="85" y2="75"/>
+  </svg>`,
+  `<svg viewBox="0 0 155 190">
+    <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
+    <line class="gallows" x1="115" x2="115" y1="10" y2="35"/>
+    <line class="gallows" x1="105" x2="125" y1="35" y2="35"/>
+    <line class="gallows" x1="20" x2="20" y1="180" y2="10"/>
+    <line class="gallows" x1="50" x2="20" y1="10" y2="40"/>
+    <line class="gallows" x1="5" x2="35" y1="180" y2="180"/>
+    <line class="gallows" x1="10" x2="20" y1="180" y2="170"/>
+    <line class="gallows" x1="20" x2="30" y1="170" y2="180"/>
+    <circle id="head" cx="115" cy="55" r="15" fill="none"/>
+    <line id="body" x1="115" x2="115" y1="125" y2="70"/>
+    <line id="left-arm" x1="115" x2="80" y1="85" y2="75"/>
+  </svg>`,
+  `<svg viewBox="0 0 155 190">
+    <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
+    <line class="gallows" x1="115" x2="115" y1="10" y2="35"/>
+    <line class="gallows" x1="105" x2="125" y1="35" y2="35"/>
+    <line class="gallows" x1="20" x2="20" y1="180" y2="10"/>
+    <line class="gallows" x1="50" x2="20" y1="10" y2="40"/>
+    <line class="gallows" x1="5" x2="35" y1="180" y2="180"/>
+    <line class="gallows" x1="10" x2="20" y1="180" y2="170"/>
+    <line class="gallows" x1="20" x2="30" y1="170" y2="180"/>
+    <circle id="head" cx="115" cy="55" r="15" fill="none"/>
+    <line id="body" x1="115" x2="115" y1="125" y2="70"/>
+  </svg>`,
+  `<svg viewBox="0 0 155 190">
+    <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
+    <line class="gallows" x1="115" x2="115" y1="10" y2="35"/>
+    <line class="gallows" x1="105" x2="125" y1="35" y2="35"/>
+    <line class="gallows" x1="20" x2="20" y1="180" y2="10"/>
+    <line class="gallows" x1="50" x2="20" y1="10" y2="40"/>
+    <line class="gallows" x1="5" x2="35" y1="180" y2="180"/>
+    <line class="gallows" x1="10" x2="20" y1="180" y2="170"/>
+    <line class="gallows" x1="20" x2="30" y1="170" y2="180"/>
+    <circle id="head" cx="115" cy="55" r="15" fill="none"/>
+  </svg>`,
+  `<svg viewBox="0 0 155 190">
+    <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
+    <line class="gallows" x1="115" x2="115" y1="10" y2="35"/>
+    <line class="gallows" x1="105" x2="125" y1="35" y2="35"/>
+    <line class="gallows" x1="20" x2="20" y1="180" y2="10"/>
+    <line class="gallows" x1="50" x2="20" y1="10" y2="40"/>
+    <line class="gallows" x1="5" x2="35" y1="180" y2="180"/>
+    <line class="gallows" x1="10" x2="20" y1="180" y2="170"/>
+    <line class="gallows" x1="20" x2="30" y1="170" y2="180"/>
+  </svg>`
+]; // Array con los dibujos segun la vida restante
+let palabraElegida; //Palabra a adivinar
+let palabraAdivinada; //Palabra que se va a ir formando
+let largoPalabra; //Largo de la palabra
+let vidas; //Vidas en juego
+let aciertos; //Contador de letras acertadas
+let letrasPedidas; //Letras que ya fueron ingresadas
+let letraIngresada; //Letra ingresada en cada iteración
 
 
+let cantidadJugadores; // Cantidad de jugadores que van a jugar
+class jugador {
+  constructor (name) {
+    this.nombre = name;
+    this.jugadas = 0;
+    this.puntaje = 0;
+  }  
+} // Clase para crear cada jugador
+const jugadores =[]; // Array con los jugadores 
+let turno = 0; // Turno actual de jugador
+let finTurno = false; // Booleano indicando fin de turno por acierto o sin vidas
+
+const main = document.querySelector("main")
+const rules = document.querySelector("#rules");
+const players = document.querySelector("#players");
+const names = document.querySelector("#names");
+const numberOfPlayers = document.querySelector("#numberofplayers");
+const posiciones = document.querySelector("#puntajes tbody");
+
+document.addEventListener('DOMContentLoaded', () => {
+  players.select();
+  players.focus();
+});
+
+numberOfPlayers.addEventListener("submit", (ev) => {
+  ev.preventDefault();
+  const start = document.querySelector("#start");
+  players.setAttribute("disabled", "");
+  start.setAttribute("disabled", "");
+  cantidadJugadores = Number(players.value);
+  for (let i=1; i<=cantidadJugadores; i+=1) {
+    names.innerHTML += /*html*/
+    `
+    <div>
+      <label for="player${i}">Nombre Jugador ${i}:</label>
+      <input type="text" name="player${i}" id="player${i}" required size = 10>
+    </div>
+    `;
+  }
+  names.innerHTML += /*html*/
+  `
+  <div id="saveNames">
+    <button>Guardar nombre/s</button>
+  </div>
+  `;
+  document.querySelector("#player1").select();
+  document.querySelector("#player1").focus();
+});
+
+// Crea cada jugador dentro del array de jugadores
+names.addEventListener("submit", (ev) => {
+  ev.preventDefault();
+  for (let i=1; i<=cantidadJugadores; i+=1) {
+    const player = document.querySelector("#player" + i);
+    jugadores[i-1] = new jugador(player.value.toUpperCase());
+  }
+  juego();
+});
+
+
+function juego() {
+  document.querySelector("#rulesButton").classList.remove("d-none");
+  document.querySelector("#puntajes").classList.remove("d-none");
+  actualizarPosiciones();
+  palabraAdivinada = [];
+  largoPalabra = 0;
+  vidas = 6;
+  aciertos = 0;
+  letraIngresada = "";
+  letrasPedidas = [];
+
+  if (cantidadJugadores == 1) {
+    elegirPalabra(true);
+  } else {
+    Swal.fire({
+      icon: 'question',
+      title: `Turno de ${jugadores[turno].nombre}`,
+      text: '¿Quieres usar una palabra aleatoria o que un contrincante ingrese una nueva?',
+      input: 'text',
+      inputPlaceholder: 'Ingrese palabra',
+      showDenyButton: true,
+      denyButtonText: 'Palabra aleatoria',
+      confirmButtonText: 'Palabra ingresada',
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      inputValidator: (value) => {
+        if (!value) {
+          return 'Ingresa una palabra';
+        }
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        palabraElegida = result.value.toUpperCase();
+        elegirPalabra(false);
+      } else if (result.isDenied) {
+        elegirPalabra(true);
+      }
+    })
+  }
+}
 
 /*****************************************************/
 /* Funcion que elige una palabra al azar de la lista */
 /*****************************************************/
-function elegirPalabra(opcion) {
-  if (opcion) {
+function elegirPalabra(aleatoria) {
+  if (aleatoria) {
     let indice = Math.floor(Math.random()*listaPalabras.length);
     palabraElegida = listaPalabras[indice];
-  } else {
-    palabraElegida = prompt("Ingrese la palabra:").toUpperCase();
   }
   palabraElegida = palabraElegida.split("");
   largoPalabra = palabraElegida.length;
-  palabraElegida.forEach(() => palabraAdivinada.push("_")); // Crea la palabra que se va formando con un guion por cada letra de la palabra elegida
-  return
+  palabraElegida.forEach(() => palabraAdivinada.push("-")); // Crea la palabra que se va formando con un guion por cada letra de la palabra elegida
+  console.log(palabraElegida)
+  tablero();
 }
 
-/***************************************************************************/
-/* Funcion que muestra la palabra que se va formando y las vidas restantes */
-/***************************************************************************/
-function mostrarTablero(jugador) {
-  console.log("Turno de " + jugador);
-  console.log(personaje[vidas]);
-  console.log(palabraAdivinada.join(" "));
-  console.log("Te quedan " + vidas + " vidas");
-  console.log("Letras ya pedidas: " + letrasPedidas.join(", "));
+
+function tablero () {
+  borrarHtml(main);
+  main.innerHTML = /*html*/
+  `
+  <h2 id="title">TURNO DE ${jugadores[turno].nombre}</h2>
+  <div id="lifes"></div>
+  <div id="imagen"></div>
+  <div id="word-in-game"></div>
+  <div id="letters">
+    <div class="fila">
+      <button class="letter">Q</button>
+      <button class="letter">W</button>
+      <button class="letter">E</button>
+      <button class="letter">R</button>
+      <button class="letter">T</button>
+      <button class="letter">Y</button>
+      <button class="letter">U</button>
+      <button class="letter">I</button>
+      <button class="letter">O</button>
+      <button class="letter">P</button>
+    </div>
+    <div class="fila">
+      <button class="letter">A</button>
+      <button class="letter">S</button>
+      <button class="letter">D</button>
+      <button class="letter">F</button>
+      <button class="letter">G</button>
+      <button class="letter">H</button>
+      <button class="letter">J</button>
+      <button class="letter">K</button>
+      <button class="letter">L</button>
+      <button class="letter">Ñ</button>
+    </div>
+    <div class="fila">
+      <button class="letter">Z</button>
+      <button class="letter">X</button>
+      <button class="letter">C</button>
+      <button class="letter">V</button>
+      <button class="letter">B</button>
+      <button class="letter">N</button>
+      <button class="letter">M</button>
+    </div>
+  </div>
+  `;
+  main.setAttribute("id", "tablero");
+  letras = document.querySelector("#letters");
+  letras.addEventListener("click", clickLetra);
+  document.addEventListener("keyup", teclado);
+  render();
 }
 
-/************************************************************************************/
-/* Funcion que pida una letra y verifica que se ingrese un solo caracter alfabetico */
-/************************************************************************************/
-function pedirLetra(jugador) {
-  let letraOk = true;
-  do {
-    letraOk = true;
-    letraIngresada = prompt(jugador + " ingresa una letra...");
-    if (letraIngresada.length != 1) {
-      console.warn("Ingresa una sola letra.");
-      letraOk = false;
-    } else if (letrasValidas.test(letraIngresada)) {
-      letraIngresada = letraIngresada.toUpperCase();
-      if (letrasPedidas.some(letraPedida => letraPedida == letraIngresada)) {
-        console.warn("Ya ingresaste esa letra");
-        letraOk = false;
-      }
-    } else {
-      console.warn('Ingresaste "' + letraIngresada + '", no es una letra.');
-      letraOk = false;
+function borrarHtml (elemento) {
+  while (elemento.firstChild) {
+    elemento.removeChild(elemento.firstChild);
+  } 
+}
+
+
+
+function clickLetra(evt){
+  if(evt.target.classList.contains("letter")) {
+    letraIngresada = evt.target.innerHTML;
+    comprobarLetra(evt.target);
+  }
+}
+
+
+function teclado (tecla){
+  letraIngresada = tecla.key.toUpperCase();
+  const letrasAbecedario = document.querySelectorAll(".letter");
+  letrasAbecedario.forEach(letra => {
+    if (letra.innerHTML ==  letraIngresada){  
+      comprobarLetra(letra);
     }
-  }while (!letraOk)
-  console.clear();
-  console.log('Ingresaste "' + letraIngresada + '"');
-  letrasPedidas.push(letraIngresada);
+  });
 }
+
 
 /*****************************************************************************************************/
 /* Funcion que comprueba si la letra esta en la palabra y suma aciertos, o resta vidas si no lo esta */
 /*****************************************************************************************************/
-function comprobarLetra() {
-  let conta = 0;
-  for (letra in palabraElegida) {
-    if (letraIngresada == palabraElegida[letra]) {
-      palabraAdivinada[letra] = letraIngresada;
-      conta += 1;
+function comprobarLetra(boton) {
+  boton.setAttribute("disabled","");
+  if (!letrasPedidas.some(letraPedida => letraPedida == letraIngresada)) {
+    letrasPedidas.push(letraIngresada);
+    let conta = 0;
+    for (let letra in palabraElegida) {
+      if (letraIngresada == palabraElegida[letra]) {
+        palabraAdivinada[letra] = letraIngresada;
+        conta += 1;
+      }
+    }
+    if (conta == 0) {
+      vidas -= 1;
+      boton.classList.add("fallo");
+      Toastify({
+        text: "Letra incorrecta",
+        duration: 1000,
+        position: "center",
+        gravity: "top",
+        offset: {
+          y: "100%",
+        },
+        style: {
+          background: "linear-gradient(to right, rgb(255, 10, 31), rgb(255, 195, 113))",
+        }
+      }).showToast();
+
+      } else {
+      aciertos += conta;
+      boton.classList.add("acierto");
+      Toastify({
+        text: "Letra correcta",
+        duration: 1000,
+        position: "center",
+        gravity: "top",
+        offset: {
+          y: "100%",
+        },
+        style: {
+          background: "linear-gradient(to right, rgb(34, 159, 0), rgb(150, 201, 61))",
+        }
+      }).showToast();
     }
   }
-  if (conta == 0) {
-    vidas -= 1;
-    console.error('La letra "' + letraIngresada + '" no esta en la palabra');
-  } else {
-    aciertos += conta;
-    console.log('La letra "' + letraIngresada + '" esta en la palabra');
+  comprobarEstado();
+}
+
+
+function render () {
+  const lifes = document.querySelector("#lifes");
+  const imagen = document.querySelector("#imagen");
+  const wordInGame = document.querySelector("#word-in-game");
+  lifes.innerHTML = `<p>Vidas restantes: ${vidas}</p>`;
+  imagen.innerHTML = personaje[vidas];
+  wordInGame.innerHTML = "";
+  for (let letra in palabraAdivinada) {
+    wordInGame.innerHTML += /*html*/
+    `
+    <div class="letras">${palabraAdivinada[letra]}</div>
+    `;
+  }
+}
+
+function comprobarEstado () {
+  let resultado;
+  let mensaje;
+  let icono;
+  if (vidas == 0) {
+    palabraAdivinada = palabraElegida;
+    document.querySelector("#word-in-game").classList.add("no-ok");
+    resultado = `Has fallado ${jugadores[turno].nombre}`;
+    mensaje = `La palabra era ${palabraElegida.join("")}. No has sumado puntos.`;
+    icono = "error";
+    finTurno = true;
+  } else if (aciertos == largoPalabra) {
+    jugadores[turno].puntaje += vidas;
+    document.querySelector("#word-in-game").classList.add("ok");
+    resultado = `Felicitaciones ${jugadores[turno].nombre}, has acertado!!!`;
+    mensaje = `La palabra es ${palabraElegida.join("")}. Sumaste ${vidas} punto/s.`;
+    icono = "success";
+    finTurno = true;
+  }
+  if (finTurno) {
+    finTurno = false;
+    jugadores[turno].jugadas += 1;
+    document.removeEventListener("keyup", teclado);
+    document.querySelector("#letters").removeEventListener("click", clickLetra);
+    if (turno + 1 == cantidadJugadores) {
+      turno = 0;
+    } else {
+      turno += 1;
+    }
+    actualizarPosiciones();
+    elegir(resultado, mensaje, icono);
+  }
+  render();
+}
+
+function actualizarPosiciones() {
+  const jugadoresOrdenados = jugadores.map(jugador => jugador);
+  jugadoresOrdenados.sort((a, b) => b.puntaje - a.puntaje);
+  borrarHtml(posiciones);
+  for (let i = 0; i < cantidadJugadores; i += 1) {
+    posiciones.innerHTML += /*html*/
+    `
+    <tr>
+      <th>${i + 1}</th>
+      <td class="name">${jugadoresOrdenados[i].nombre}</td>
+      <td>${jugadoresOrdenados[i].jugadas}</td>
+      <td>${jugadoresOrdenados[i].puntaje}</td>
+    </tr>
+    `;
   }
 }
 
 
-/**********************/
-/* Programa principal */
-/**********************/
-
-// Verifica que la cantidad de jugadores sea un numero y sea distinto de 0
-// do {
-//   cantidadJugadores = Number(prompt("Bienvenido/s al juego del AHORCADO.\n¿Cuantas personas van a jugar?"));
-// }while (isNaN(cantidadJugadores) || cantidadJugadores == 0);
-
-// // Crea cada jugador dentro del array de jugadores
-// for (let i=0; i<cantidadJugadores; i+=1) {
-//   jugadores[i] = new jugador(prompt("Ingrese nombre de jugador" + (i+1)).toUpperCase());
-// }
-
-// do {
-//   // Juegan una palabra cada jugador
-//   for (let i=0; i<cantidadJugadores; i+=1) {
-//     //Inicializo variables y borro consola en cada ronda
-//     palabraAdivinada = [];
-//     largoPalabra = 0;
-//     vidas = 6;
-//     aciertos = 0;
-//     letraIngresada = "";
-//     letrasPedidas = [];
-//     console.clear();
-
-//     if (cantidadJugadores == 1) {
-//       elegirPalabra(true);
-//     } else {
-//       elegirPalabra(confirm("Turno de " + jugadores[i].nombre + "\n¿Quieres usar palabras guardadas o que un contrincante ingrese una nueva?\nACEPTAR: Usar palabra aleatoria.\nCANCELAR: Ingresar palabra para jugar."));
-//     }
-    
-    
-//     //Se piden letras hasta que adivine la palabra o se quede sin vidas
-//     while(true){
-//       mostrarTablero(jugadores[i].nombre);
-//       pedirLetra(jugadores[i].nombre);
-//       comprobarLetra();
-//       if (vidas == 0) {
-//         mostrarTablero(jugadores[i].nombre);
-//         alert('Has fallado ' + jugadores[i].nombre + '. La palabra era "' + palabraElegida.join("") + '".\nNo has sumado puntos.' );
-//         break;
-//       }
-//       if (aciertos == largoPalabra) {
-//         mostrarTablero(jugadores[i].nombre);
-//         alert('Felicitaciones ' + jugadores[i].nombre + ', has acertado!!! La palabra es "' + palabraElegida.join("") + '".\nSumaste ' + vidas + ' punto/s.');
-//         jugadores[i].puntaje += vidas;
-//         break;
-//       }
-//     }
-//   }
-//   //Pregunto si quiere jugar otra ronda
-//   seguirJugando = confirm("¿Quiere/n jugar otra ronda?");
-// }while (seguirJugando);
-
-// console.clear();
-
-// // Muestro los puntajes de cada jugador ordenados de mayor a menor
-// console.log("TABLA DE POSICIONES");
-// jugadores.sort((a, b) => b.puntaje - a.puntaje);
-// console.table(jugadores);
+function elegir (resultado, mensaje, icono) {
+  Swal.fire({
+    icon: icono,
+    title: resultado,
+    text: mensaje,
+    confirmButtonText: 'Siguiente turno',
+    showDenyButton: true,
+    denyButtonText: 'Guardar juego',
+    showCancelButton: true,
+    cancelButtonText: 'Juego nuevo',
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      juego();
+    } else if (result.isDenied) {
+      guardarJuego;
+    } else {
+      location.reload();
+    }
+  });
+}
