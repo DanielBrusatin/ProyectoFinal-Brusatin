@@ -119,6 +119,14 @@ tr .name {
 .dropup .dropdown-menu {
     min-width: 60vw;
 }
+#numberofplayers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#numberofplayers button {
+    margin: 10px;
+}
 
 @media screen and (max-width: 768px) {
     #tablero {
@@ -146,5 +154,10 @@ tr .name {
     .dropup .dropdown-menu {
         width: 100vw;
     }
-    
+    .dropup .dropdown-menu {
+        min-width: 60vw;
+    }
+    #names>* {
+        flex-direction: column;
+    }
 }
