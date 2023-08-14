@@ -15,7 +15,7 @@ body {
     "imagen vidas" 15%
     "imagen palabra" auto
     "imagen letras" auto/30% 70%;
-    margin: 5vw;
+    margin: 10px 5vw;
 }
 #title {
     grid-area: titulo;
