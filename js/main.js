@@ -103,7 +103,6 @@ let aciertos = 0; //Contador de letras acertadas
 let letrasPedidas = []; //Letras que ya fueron ingresadas
 let letraIngresada = ""; //Letra ingresada en cada iteración
 
-let cantidadJugadores; // Cantidad de jugadores que van a jugar
 class jugador {
   constructor (name) {
     this.nombre = name;
@@ -112,29 +111,36 @@ class jugador {
   }  
 } // Clase para crear cada jugador
 let jugadores =[]; // Array con los jugadores 
-let turno = 0; // Turno actual de jugador
+let cantidadJugadores; // Cantidad de jugadores que van a jugar
+let turno = 0; // Indice de jugador en turno
 let finTurno = false; // Booleano indicando fin de turno por acierto o sin vidas
 
-const main = document.querySelector("main")
-const rules = document.querySelector("#rules");
-const players = document.querySelector("#players");
-const names = document.querySelector("#names");
-const numberOfPlayers = document.querySelector("#numberofplayers");
-const posiciones = document.querySelector("#puntajes tbody");
+const main = document.querySelector('main')
+const rules = document.querySelector('#rules');
+const players = document.querySelector('#players');
+const names = document.querySelector('#names');
+const numberOfPlayers = document.querySelector('#numberofplayers');
+const posiciones = document.querySelector('#puntajes tbody');
+
+document.querySelector('#guardar').addEventListener('click', guardarJuego)
+document.querySelector('#finalizar').addEventListener('click', finalizarJuego)
 
 document.addEventListener('DOMContentLoaded', () => {
   players.select();
   players.focus();
-  localStorage.length && juegoGuardado();
+  localStorage.getItem('jugadores') && juegoGuardado(); // Si hay un juego guardado llama a funcion para cargarlo
 });
 
-numberOfPlayers.addEventListener("submit", (ev) => {
+/*******************************************************************************************/
+/* Cuando se ingresa la cantidad de jugadores se arman los inputs para colocar los nombres */
+/*******************************************************************************************/
+numberOfPlayers.addEventListener('submit', (ev) => {
   ev.preventDefault();
-  const start = document.querySelector("#start");
-  players.setAttribute("disabled", "");
-  start.setAttribute("disabled", "");
+  const start = document.querySelector('#start');
+  players.setAttribute('disabled', '');
+  start.setAttribute('disabled', '');
   cantidadJugadores = Number(players.value);
-  for (let i=1; i<=cantidadJugadores; i+=1) {
+  for (let i = 1; i <= cantidadJugadores; i += 1) {
     names.innerHTML += /*html*/
     `
     <div>
@@ -149,24 +155,27 @@ numberOfPlayers.addEventListener("submit", (ev) => {
     <button>Guardar nombre/s</button>
   </div>
   `;
-  document.querySelector("#player1").select();
-  document.querySelector("#player1").focus();
+  document.querySelector('#player1').select();
+  document.querySelector('#player1').focus();
 });
 
-// Crea cada jugador dentro del array de jugadores
-names.addEventListener("submit", (ev) => {
+/***************************************************/
+/* Crea cada jugador dentro del array de jugadores */
+/***************************************************/
+names.addEventListener('submit', (ev) => {
   ev.preventDefault();
-  for (let i=1; i<=cantidadJugadores; i+=1) {
-    const player = document.querySelector("#player" + i);
+  for (let i = 1; i <= cantidadJugadores; i += 1) {
+    const player = document.querySelector('#player' + i);
     jugadores[i-1] = new jugador(player.value.toUpperCase());
   }
   juego();
 });
 
-
+/********************/
+/* Inicio del juego */
+/********************/
 function juego() {
   actualizarPosiciones();
-
   if (cantidadJugadores == 1) {
     elegirPalabra(true);
   } else {
@@ -197,24 +206,25 @@ function juego() {
   }
 }
 
-/*****************************************************/
-/* Funcion que elige una palabra al azar de la lista */
-/*****************************************************/
+/**********************************************************************************************/
+/* Si se envia un true elige una palabra al azar de la lista sino juega con la que se ingreso */
+/**********************************************************************************************/
 function elegirPalabra(aleatoria) {
   if (aleatoria) {
     let indice = Math.floor(Math.random()*listaPalabras.length);
     palabraElegida = listaPalabras[indice];
   }
-  palabraElegida = palabraElegida.split("");
+  palabraElegida = palabraElegida.split('');
   largoPalabra = palabraElegida.length;
-  palabraElegida.forEach(() => palabraAdivinada.push("-")); // Crea la palabra que se va formando con un guion por cada letra de la palabra elegida
-  console.log(palabraElegida)
+  palabraElegida.forEach(() => palabraAdivinada.push('-')); // Crea la palabra que se va formando con un guion por cada letra de la palabra elegida
   tablero();
 }
 
-
+/****************************/
+/* Arma el tablero de juego */
+/****************************/
 function tablero () {
-  document.querySelectorAll("button").forEach(el => el.classList.remove("d-none"));
+  document.querySelectorAll('button').forEach(el => el.classList.remove('d-none'));
   borrarHtml(main);
   main.innerHTML = /*html*/
   `
@@ -258,32 +268,52 @@ function tablero () {
     </div>
   </div>
   `;
-  main.setAttribute("id", "tablero");
-  letras = document.querySelector("#letters");
-  letras.addEventListener("click", clickLetra);
-  document.addEventListener("keyup", teclado);
+  main.setAttribute('id', 'tablero');
+  letras = document.querySelector('#letters');
+  letras.addEventListener('click', clickLetra);
+  document.addEventListener('keyup', teclado);
   render();
 }
 
+/************************/
+/* Actualiza el tablero */
+/************************/
+function render () {
+  const lifes = document.querySelector('#lifes');
+  const imagen = document.querySelector('#imagen');
+  const wordInGame = document.querySelector('#word-in-game');
+  lifes.innerHTML = `<p>Vidas restantes: ${vidas}</p>`;
+  imagen.innerHTML = personaje[vidas];
+  wordInGame.innerHTML = '';
+  for (let letra in palabraAdivinada) {
+    wordInGame.innerHTML += /*html*/
+    `
+    <div class="letras">${palabraAdivinada[letra]}</div>
+    `;
+  }
+}
+
+/********************************************************** */
+/* Borra el html interno del elemento pasado como parametro */
+/********************************************************** */
 function borrarHtml (elemento) {
   while (elemento.firstChild) {
     elemento.removeChild(elemento.firstChild);
   } 
 }
 
-
-
-function clickLetra(evt){
-  if(evt.target.classList.contains("letter")) {
+/*********************************************************/
+/* Eventos para ingresos de letras por botones o teclado */
+/*********************************************************/
+function clickLetra (evt) {
+  if(evt.target.classList.contains('letter')) {
     letraIngresada = evt.target.innerHTML;
     comprobarLetra(evt.target);
   }
 }
-
-
-function teclado (tecla){
+function teclado (tecla) {
   letraIngresada = tecla.key.toUpperCase();
-  const letrasAbecedario = document.querySelectorAll(".letter");
+  const letrasAbecedario = document.querySelectorAll('.letter');
   letrasAbecedario.forEach(letra => {
     if (letra.innerHTML ==  letraIngresada){  
       comprobarLetra(letra);
@@ -292,11 +322,11 @@ function teclado (tecla){
 }
 
 
-/*****************************************************************************************************/
-/* Funcion que comprueba si la letra esta en la palabra y suma aciertos, o resta vidas si no lo esta */
-/*****************************************************************************************************/
+/*****************************************************************************************/
+/* Comprueba si la letra esta en la palabra y suma aciertos, o resta vidas si no lo esta */
+/*****************************************************************************************/
 function comprobarLetra (boton) {
-  boton.setAttribute("disabled","");
+  boton.setAttribute('disabled', '');
   if (!letrasPedidas.some(letraPedida => letraPedida == letraIngresada)) {
     letrasPedidas.push(letraIngresada);
     let conta = 0;
@@ -308,33 +338,32 @@ function comprobarLetra (boton) {
     }
     if (conta == 0) {
       vidas -= 1;
-      boton.classList.add("fallo");
+      boton.classList.add('fallo');
       Toastify({
-        text: "Letra incorrecta",
+        text: 'Letra incorrecta',
         duration: 1000,
-        position: "center",
-        gravity: "top",
+        position: 'center',
+        gravity: 'top',
         offset: {
-          y: "100%",
+          y: '100%',
         },
         style: {
-          background: "linear-gradient(to right, rgb(255, 10, 31), rgb(255, 195, 113))",
+          background: 'linear-gradient(to right, rgb(255, 10, 31), rgb(255, 195, 113))',
         }
       }).showToast();
-
-      } else {
+    } else {
       aciertos += conta;
-      boton.classList.add("acierto");
+      boton.classList.add('acierto');
       Toastify({
-        text: "Letra correcta",
+        text: 'Letra correcta',
         duration: 1000,
-        position: "center",
-        gravity: "top",
+        position: 'center',
+        gravity: 'top',
         offset: {
-          y: "100%",
+          y: '100%',
         },
         style: {
-          background: "linear-gradient(to right, rgb(34, 159, 0), rgb(150, 201, 61))",
+          background: 'linear-gradient(to right, rgb(34, 159, 0), rgb(150, 201, 61))',
         }
       }).showToast();
     }
@@ -342,46 +371,33 @@ function comprobarLetra (boton) {
   comprobarEstado();
 }
 
-
-function render () {
-  const lifes = document.querySelector("#lifes");
-  const imagen = document.querySelector("#imagen");
-  const wordInGame = document.querySelector("#word-in-game");
-  lifes.innerHTML = `<p>Vidas restantes: ${vidas}</p>`;
-  imagen.innerHTML = personaje[vidas];
-  wordInGame.innerHTML = "";
-  for (let letra in palabraAdivinada) {
-    wordInGame.innerHTML += /*html*/
-    `
-    <div class="letras">${palabraAdivinada[letra]}</div>
-    `;
-  }
-}
-
+/*****************************************************************/
+/* Comprueba si se acabaron las vidas o si se adivino la palabra */
+/*****************************************************************/
 function comprobarEstado () {
   let resultado;
   let mensaje;
   let icono;
   if (vidas == 0) {
     palabraAdivinada = palabraElegida;
-    document.querySelector("#word-in-game").classList.add("no-ok");
+    document.querySelector('#word-in-game').classList.add('no-ok');
     resultado = `Has fallado ${jugadores[turno].nombre}`;
-    mensaje = `La palabra era ${palabraElegida.join("")}. No has sumado puntos.`;
-    icono = "error";
+    mensaje = `La palabra era ${palabraElegida.join('')}. No has sumado puntos.`;
+    icono = 'error';
     finTurno = true;
   } else if (aciertos == largoPalabra) {
     jugadores[turno].puntaje += vidas;
-    document.querySelector("#word-in-game").classList.add("ok");
+    document.querySelector('#word-in-game').classList.add('ok');
     resultado = `Felicitaciones ${jugadores[turno].nombre}, has acertado!!!`;
-    mensaje = `La palabra es ${palabraElegida.join("")}. Sumaste ${vidas} punto/s.`;
-    icono = "success";
+    mensaje = `La palabra es ${palabraElegida.join('')}. Sumaste ${vidas} punto/s.`;
+    icono = 'success';
     finTurno = true;
   }
   if (finTurno) {
     jugadores[turno].jugadas += 1;
     finTurno = false;
-    document.removeEventListener("keyup", teclado);
-    document.querySelector("#letters").removeEventListener("click", clickLetra);
+    document.removeEventListener('keyup', teclado);
+    document.querySelector('#letters').removeEventListener('click', clickLetra);
     if (turno + 1 == cantidadJugadores) {
       turno = 0;
     } else {
@@ -392,7 +408,7 @@ function comprobarEstado () {
     largoPalabra = 0;
     vidas = 6;
     aciertos = 0;
-    letraIngresada = "";
+    letraIngresada = '';
     letrasPedidas = [];  
     actualizarPosiciones();
     elegir(resultado, mensaje, icono);
@@ -400,6 +416,9 @@ function comprobarEstado () {
   render();
 }
 
+/*********************************************************/
+/* Actualiza la tabla de posiciones en orden descendente */
+/*********************************************************/
 function actualizarPosiciones () {
   const jugadoresOrdenados = jugadores.map(jugador => jugador);
   jugadoresOrdenados.sort((a, b) => b.puntaje - a.puntaje);
@@ -417,7 +436,9 @@ function actualizarPosiciones () {
   }
 }
 
-
+/********************************************************************/
+/* Permite elegir si seguir jugando, guardar el juego o finalizarlo */
+/********************************************************************/
 function elegir (resultado, mensaje, icono) {
   Swal.fire({
     icon: icono,
@@ -434,14 +455,15 @@ function elegir (resultado, mensaje, icono) {
   }).then((result) => {
     if (result.isConfirmed) {
       juego();
-    } else if (result.isDenied) {
-      guardarJuego();
     } else {
       finalizarJuego();
     }
   });
 }
 
+/********************************************/
+/* Guarda las variables en el local storage */
+/********************************************/
 function guardarJuego () {
   localStorage.setItem('palabraElegida', palabraElegida);
   localStorage.setItem('palabraAdivinada', palabraAdivinada);
@@ -453,10 +475,12 @@ function guardarJuego () {
   return false
 }
 
+/*******************************************************************/
+/* Muestra las posiciones finales y permite iniciar un nuevo juego */
+/*******************************************************************/
 function finalizarJuego () {
   localStorage.clear();
-  const tabla = document.querySelector('table')
-
+  const tabla = document.querySelector('table');
   Swal.fire({
     icon: 'info',
     title: 'Tabla de posiciones',
@@ -466,16 +490,19 @@ function finalizarJuego () {
     allowEscapeKey: false,
   }).then((result) => {
     if (result.isConfirmed) {
-      location.reload()
+      location.reload();
     }
   });
 }
 
+/************************************************************************/
+/* Muestra el juego guardado y pregunta si cargarlo o empezar uno nuevo */
+/************************************************************************/
 function juegoGuardado () {
-  jugadores = JSON.parse(localStorage.getItem('jugadores'))
-  cantidadJugadores = jugadores.length
+  jugadores = JSON.parse(localStorage.getItem('jugadores'));
+  cantidadJugadores = jugadores.length;
   actualizarPosiciones();
-  const tabla = document.querySelector('table').cloneNode(true)
+  const tabla = document.querySelector('table').cloneNode(true);
   Swal.fire({
     icon: 'question',
     title: 'Hay un juego guardado',
@@ -489,35 +516,34 @@ function juegoGuardado () {
     if (result.isConfirmed) {
       cargarJuego();
     } else if (result.isDenied) {
-      localStorage.clear()
+      localStorage.clear();
     }
   })
 }
 
+/************************************************************/
+/* Carga el juego guardado desde el estado en que se guardo */
+/************************************************************/
 function cargarJuego () {
-  turno = Number(localStorage.getItem('turno'))
-  console.log(!localStorage.getItem('palabraElegida'))
+  turno = Number(localStorage.getItem('turno'));
   if (localStorage.getItem('palabraElegida')) {
-    palabraElegida = localStorage.getItem('palabraElegida').split(',')
-    largoPalabra = palabraElegida.length
-    palabraAdivinada = localStorage.getItem('palabraAdivinada').split(',')
-    vidas = Number(localStorage.getItem('vidas'))
-    aciertos = Number(localStorage.getItem('aciertos'))
-    letrasPedidas = localStorage.getItem('letrasPedidas').split(',')
-    console.log("prueba")
-    tablero()
+    palabraElegida = localStorage.getItem('palabraElegida').split(',');
+    largoPalabra = palabraElegida.length;
+    palabraAdivinada = localStorage.getItem('palabraAdivinada').split(',');
+    vidas = Number(localStorage.getItem('vidas'));
+    aciertos = Number(localStorage.getItem('aciertos'));
+    letrasPedidas = localStorage.getItem('letrasPedidas').split(',');
+    tablero();
     letrasPedidas.forEach(letraPedida => {
-      const boton = document.querySelector(`#${letraPedida}`)
-      boton.setAttribute('disabled','')
+      const boton = document.querySelector(`#${letraPedida}`);
+      boton.setAttribute('disabled', '');
       if (palabraElegida.some((letra) => letra == letraPedida)) {  
-        boton.classList.add('acierto')
+        boton.classList.add('acierto');
       } else {
-        boton.classList.add('fallo')
+        boton.classList.add('fallo');
       }
     });
-  
   } else {
-    juego()
+    juego();
   }
-
 }

@@ -69,7 +69,6 @@ svg {
 #names {
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: center; */
 }
 #names>* {
     width: 50%;
@@ -77,7 +76,6 @@ svg {
     justify-content: center;
     align-items: center;
     padding: 15px 0px;
-    /* margin: ; */
 }
 #names>* label {
     padding-left: 3px;
