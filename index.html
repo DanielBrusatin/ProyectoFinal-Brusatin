@@ -10,23 +10,9 @@
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-  <div class="dropup d-none" id="rulesButton">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Reglas
-    </button>
-    <div class="dropdown-menu p-4 text-body-secondary">
-        <p>Puedes jugar solo o con amigos.</p>
-        <p>En modo multijugador la palabra puede ser ingresada por un adversario o puede ser una palabra ya guardada.</p>
-        <p>Los jugadores cuentan con 6 vidas para adivinar la palabra secreta.</p>
-        <p>Cada letra que se ingrese y no aparezca en la palabra restará una vida.</p>
-        <p>Si se pierden todas las vidas termina el turno de ese jugador sin sumar puntos.</p>
-        <p>Si la palabra es adivinada se le sumarán al jugador tantos puntos como vidas restantes posea.</p>
-      </div>
-    </ul>
-  </div>
 
-  <div class="dropdown-center d-none" id="puntajes">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+  <div class="dropdown-center" id="puntajes">
+    <button class="btn btn-secondary dropdown-toggle d-none" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Tabla de posiciones
     </button>
     <div class="dropdown-menu">
@@ -45,6 +31,9 @@
       </div>
     </ul>
   </div>
+  
+
+
   <main>
     <h1>¡¡¡Bienvenido/s al juego del AHORCADO!!!</h1>
     <div id="rules">
@@ -68,6 +57,28 @@
     <form id="names">
     </form>
   </main>
+  <div id="piePagina">
+    <button class="btn btn-secondary d-none" type="button" id="guardar" onclick="guardarJuego()">
+      Guardar Juego
+    </button>
+    <button class="btn btn-secondary d-none" type="button" id="finalizar" onclick="finalizarJuego ()">
+      Finalizar Juego
+    </button>
+    <div class="dropup" id="rulesButton">
+      <button class="btn btn-secondary dropdown-toggle d-none" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Reglas
+      </button>
+      <div class="dropdown-menu p-4 text-body-secondary">
+          <p>Puedes jugar solo o con amigos.</p>
+          <p>En modo multijugador la palabra puede ser ingresada por un adversario o puede ser una palabra ya guardada.</p>
+          <p>Los jugadores cuentan con 6 vidas para adivinar la palabra secreta.</p>
+          <p>Cada letra que se ingrese y no aparezca en la palabra restará una vida.</p>
+          <p>Si se pierden todas las vidas termina el turno de ese jugador sin sumar puntos.</p>
+          <p>Si la palabra es adivinada se le sumarán al jugador tantos puntos como vidas restantes posea.</p>
+        </div>
+      </ul>
+    </div>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.22/dist/sweetalert2.all.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script src="./js/main.js"></script>

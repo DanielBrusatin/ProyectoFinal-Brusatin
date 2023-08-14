@@ -96,13 +96,12 @@ const personaje = [
   </svg>`
 ]; // Array con los dibujos segun la vida restante
 let palabraElegida; //Palabra a adivinar
-let palabraAdivinada; //Palabra que se va a ir formando
-let largoPalabra; //Largo de la palabra
-let vidas; //Vidas en juego
-let aciertos; //Contador de letras acertadas
-let letrasPedidas; //Letras que ya fueron ingresadas
-let letraIngresada; //Letra ingresada en cada iteración
-
+let palabraAdivinada = []; //Palabra que se va a ir formando
+let largoPalabra = 0; //Largo de la palabra
+let vidas = 6; //Vidas en juego
+let aciertos = 0; //Contador de letras acertadas
+let letrasPedidas = []; //Letras que ya fueron ingresadas
+let letraIngresada = ""; //Letra ingresada en cada iteración
 
 let cantidadJugadores; // Cantidad de jugadores que van a jugar
 class jugador {
@@ -112,7 +111,7 @@ class jugador {
     this.puntaje = 0;
   }  
 } // Clase para crear cada jugador
-const jugadores =[]; // Array con los jugadores 
+let jugadores =[]; // Array con los jugadores 
 let turno = 0; // Turno actual de jugador
 let finTurno = false; // Booleano indicando fin de turno por acierto o sin vidas
 
@@ -126,6 +125,7 @@ const posiciones = document.querySelector("#puntajes tbody");
 document.addEventListener('DOMContentLoaded', () => {
   players.select();
   players.focus();
+  localStorage.length && juegoGuardado();
 });
 
 numberOfPlayers.addEventListener("submit", (ev) => {
@@ -165,15 +165,7 @@ names.addEventListener("submit", (ev) => {
 
 
 function juego() {
-  document.querySelector("#rulesButton").classList.remove("d-none");
-  document.querySelector("#puntajes").classList.remove("d-none");
   actualizarPosiciones();
-  palabraAdivinada = [];
-  largoPalabra = 0;
-  vidas = 6;
-  aciertos = 0;
-  letraIngresada = "";
-  letrasPedidas = [];
 
   if (cantidadJugadores == 1) {
     elegirPalabra(true);
@@ -222,6 +214,7 @@ function elegirPalabra(aleatoria) {
 
 
 function tablero () {
+  document.querySelectorAll("button").forEach(el => el.classList.remove("d-none"));
   borrarHtml(main);
   main.innerHTML = /*html*/
   `
@@ -231,37 +224,37 @@ function tablero () {
   <div id="word-in-game"></div>
   <div id="letters">
     <div class="fila">
-      <button class="letter">Q</button>
-      <button class="letter">W</button>
-      <button class="letter">E</button>
-      <button class="letter">R</button>
-      <button class="letter">T</button>
-      <button class="letter">Y</button>
-      <button class="letter">U</button>
-      <button class="letter">I</button>
-      <button class="letter">O</button>
-      <button class="letter">P</button>
+      <button class="letter" id="Q">Q</button>
+      <button class="letter" id="W">W</button>
+      <button class="letter" id="E">E</button>
+      <button class="letter" id="R">R</button>
+      <button class="letter" id="T">T</button>
+      <button class="letter" id="Y">Y</button>
+      <button class="letter" id="U">U</button>
+      <button class="letter" id="I">I</button>
+      <button class="letter" id="O">O</button>
+      <button class="letter" id="P">P</button>
     </div>
     <div class="fila">
-      <button class="letter">A</button>
-      <button class="letter">S</button>
-      <button class="letter">D</button>
-      <button class="letter">F</button>
-      <button class="letter">G</button>
-      <button class="letter">H</button>
-      <button class="letter">J</button>
-      <button class="letter">K</button>
-      <button class="letter">L</button>
-      <button class="letter">Ñ</button>
+      <button class="letter" id="A">A</button>
+      <button class="letter" id="S">S</button>
+      <button class="letter" id="D">D</button>
+      <button class="letter" id="F">F</button>
+      <button class="letter" id="G">G</button>
+      <button class="letter" id="H">H</button>
+      <button class="letter" id="J">J</button>
+      <button class="letter" id="K">K</button>
+      <button class="letter" id="L">L</button>
+      <button class="letter" id="Ñ">Ñ</button>
     </div>
     <div class="fila">
-      <button class="letter">Z</button>
-      <button class="letter">X</button>
-      <button class="letter">C</button>
-      <button class="letter">V</button>
-      <button class="letter">B</button>
-      <button class="letter">N</button>
-      <button class="letter">M</button>
+      <button class="letter" id="Z">Z</button>
+      <button class="letter" id="X">X</button>
+      <button class="letter" id="C">C</button>
+      <button class="letter" id="V">V</button>
+      <button class="letter" id="B">B</button>
+      <button class="letter" id="N">N</button>
+      <button class="letter" id="M">M</button>
     </div>
   </div>
   `;
@@ -302,7 +295,7 @@ function teclado (tecla){
 /*****************************************************************************************************/
 /* Funcion que comprueba si la letra esta en la palabra y suma aciertos, o resta vidas si no lo esta */
 /*****************************************************************************************************/
-function comprobarLetra(boton) {
+function comprobarLetra (boton) {
   boton.setAttribute("disabled","");
   if (!letrasPedidas.some(letraPedida => letraPedida == letraIngresada)) {
     letrasPedidas.push(letraIngresada);
@@ -385,8 +378,8 @@ function comprobarEstado () {
     finTurno = true;
   }
   if (finTurno) {
-    finTurno = false;
     jugadores[turno].jugadas += 1;
+    finTurno = false;
     document.removeEventListener("keyup", teclado);
     document.querySelector("#letters").removeEventListener("click", clickLetra);
     if (turno + 1 == cantidadJugadores) {
@@ -394,13 +387,20 @@ function comprobarEstado () {
     } else {
       turno += 1;
     }
+    palabraElegida = [];
+    palabraAdivinada = [];
+    largoPalabra = 0;
+    vidas = 6;
+    aciertos = 0;
+    letraIngresada = "";
+    letrasPedidas = [];  
     actualizarPosiciones();
     elegir(resultado, mensaje, icono);
   }
   render();
 }
 
-function actualizarPosiciones() {
+function actualizarPosiciones () {
   const jugadoresOrdenados = jugadores.map(jugador => jugador);
   jugadoresOrdenados.sort((a, b) => b.puntaje - a.puntaje);
   borrarHtml(posiciones);
@@ -427,16 +427,97 @@ function elegir (resultado, mensaje, icono) {
     showDenyButton: true,
     denyButtonText: 'Guardar juego',
     showCancelButton: true,
-    cancelButtonText: 'Juego nuevo',
+    cancelButtonText: 'Finalizar juego',
     allowOutsideClick: false,
     allowEscapeKey: false,
+    preDeny: guardarJuego,
   }).then((result) => {
     if (result.isConfirmed) {
       juego();
     } else if (result.isDenied) {
-      guardarJuego;
+      guardarJuego();
     } else {
-      location.reload();
+      finalizarJuego();
     }
   });
+}
+
+function guardarJuego () {
+  localStorage.setItem('palabraElegida', palabraElegida);
+  localStorage.setItem('palabraAdivinada', palabraAdivinada);
+  localStorage.setItem('vidas', vidas);
+  localStorage.setItem('aciertos', aciertos);
+  localStorage.setItem('letrasPedidas', letrasPedidas);
+  localStorage.setItem('jugadores', JSON.stringify(jugadores));
+  localStorage.setItem('turno',turno);
+  return false
+}
+
+function finalizarJuego () {
+  localStorage.clear();
+  const tabla = document.querySelector('table')
+
+  Swal.fire({
+    icon: 'info',
+    title: 'Tabla de posiciones',
+    html: tabla,
+    confirmButtonText: 'Juego nuevo',
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      location.reload()
+    }
+  });
+}
+
+function juegoGuardado () {
+  jugadores = JSON.parse(localStorage.getItem('jugadores'))
+  cantidadJugadores = jugadores.length
+  actualizarPosiciones();
+  const tabla = document.querySelector('table').cloneNode(true)
+  Swal.fire({
+    icon: 'question',
+    title: 'Hay un juego guardado',
+    html: tabla,
+    showDenyButton: true,
+    denyButtonText: 'Juego nuevo',
+    confirmButtonText: 'Continuar juego',
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      cargarJuego();
+    } else if (result.isDenied) {
+      localStorage.clear()
+    }
+  })
+}
+
+function cargarJuego () {
+  turno = Number(localStorage.getItem('turno'))
+  console.log(!localStorage.getItem('palabraElegida'))
+  if (localStorage.getItem('palabraElegida')) {
+    palabraElegida = localStorage.getItem('palabraElegida').split(',')
+    largoPalabra = palabraElegida.length
+    palabraAdivinada = localStorage.getItem('palabraAdivinada').split(',')
+    vidas = Number(localStorage.getItem('vidas'))
+    aciertos = Number(localStorage.getItem('aciertos'))
+    letrasPedidas = localStorage.getItem('letrasPedidas').split(',')
+    console.log("prueba")
+    tablero()
+    letrasPedidas.forEach(letraPedida => {
+      const boton = document.querySelector(`#${letraPedida}`)
+      boton.setAttribute('disabled','')
+      if (palabraElegida.some((letra) => letra == letraPedida)) {  
+        boton.classList.add('acierto')
+      } else {
+        boton.classList.add('fallo')
+      }
+    });
+  
+  } else {
+    juego()
+  }
+
 }

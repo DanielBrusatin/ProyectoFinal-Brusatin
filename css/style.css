@@ -96,14 +96,16 @@ svg {
     width: 100%;
 }
 
-#rulesButton {
+#piePagina {
     position: fixed;
     bottom: 0px;
-    right: 0px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
 }
 
 #puntajes button {
-    width: 100%;
+    width: 100vw;
 }
 
 tr * {
