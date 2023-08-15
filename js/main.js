@@ -193,6 +193,8 @@ function juego() {
       inputValidator: (value) => {
         if (!value) {
           return 'Ingresa una palabra';
+        } else if (/[^a-zñ]/i.test(value)) {
+          return 'Ingresa solo letras'
         }
       }
     }).then((result) => {
