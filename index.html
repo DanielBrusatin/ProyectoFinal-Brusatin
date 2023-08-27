@@ -11,43 +11,56 @@
 </head>
 <body>
 
-  <div class="dropdown-center" id="puntajes">
-    <button class="btn btn-secondary dropdown-toggle d-none" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Tabla de posiciones
-    </button>
-    <div class="dropdown-menu">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Jugadas</th>
-            <th scope="col">Puntaje</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-      </div>
-    </ul>
-  </div>
   
-
-
-  <main>
-    <h1>¡¡¡Bienvenido/s al juego del AHORCADO!!!</h1>
-    <div id="rules">
-      <h2>Reglas</h2>
-      <ul>
-        <li>Puedes jugar solo o con amigos.</li>
-        <li>En modo multijugador la palabra puede ser ingresada por un adversario o puede ser una palabra ya guardada.</li>
-        <li>Los jugadores cuentan con 6 vidas para adivinar la palabra secreta.</li>
-        <li>Cada letra que se ingrese y no aparezca en la palabra restará una vida.</li>
-        <li>Si se pierden todas las vidas termina el turno de ese jugador sin sumar puntos.</li>
-        <li>Si la palabra es adivinada se le sumarán al jugador tantos puntos como vidas restantes posea.</li>
+  <header>
+    <h1>AHORCADO</h1>
+    <div class="dropdown-center" id="puntajes">
+      <button class="btn btn-secondary dropdown-toggle d-none" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Tabla de posiciones
+      </button>
+      <div class="dropdown-menu">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Jugadas</th>
+              <th scope="col">Puntaje</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        </div>
       </ul>
     </div>
-    <form id="numberofplayers">
+  </header>
+
+  <main>
+    <h2>¡¡¡Bienvenido/s al juego del AHORCADO!!!</h2>
+    <div id="select">
+      <h3>Elije una categoría</h3>
+      <div>
+        <button id="pokemons" data-url="https://pokeapi.co/api/v2/pokemon?limit=1010">
+          <img src="./img/pokemons.png" alt="">
+          <p>POKEMONS</p>
+        </button>
+        <button id="paises" data-url="json/paises.json">
+          <img src="./img/paises.png" alt="">
+          <p>PAISES</p>
+        </button>
+        <button id="animales" data-url="json/animales.json">
+          <img src="./img/animales.png" alt="">
+          <p>ANIMALES</p>
+        </button>
+        <button id="clasico" data-url="json/clasico.json">
+          <img src="./img/clasico.png" alt="">
+          <p>CLASICO</p>
+        </button>
+      </div>
+    </div>
+
+    <form id="numberofplayers" class="d-none">
       <div>
         <label for="players">¿Cuantas personas jugarán?</label>
         <input type="number" name="players" id="players" required min="1" max="10" value="1">
@@ -56,29 +69,47 @@
     </form>
     <form id="names">
     </form>
-  </main>
-  <div id="piePagina">
-    <button class="btn btn-secondary d-none" type="button" id="guardar">
-      Guardar Juego
-    </button>
-    <button class="btn btn-secondary d-none" type="button" id="finalizar">
-      Finalizar Juego
-    </button>
-    <div class="dropup" id="rulesButton">
-      <button class="btn btn-secondary dropdown-toggle d-none" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Reglas
-      </button>
-      <div class="dropdown-menu p-4 text-body-secondary">
-          <p>Puedes jugar solo o con amigos.</p>
-          <p>En modo multijugador la palabra puede ser ingresada por un adversario o puede ser una palabra ya guardada.</p>
-          <p>Los jugadores cuentan con 6 vidas para adivinar la palabra secreta.</p>
-          <p>Cada letra que se ingrese y no aparezca en la palabra restará una vida.</p>
-          <p>Si se pierden todas las vidas termina el turno de ese jugador sin sumar puntos.</p>
-          <p>Si la palabra es adivinada se le sumarán al jugador tantos puntos como vidas restantes posea.</p>
-        </div>
+    <div id="rules">
+      <h3>Reglas</h3>
+      <ul class="p-2">
+        <li>Puedes jugar solo o con amigos.</li>
+        <li>En modo multijugador clásico la palabra puede ser ingresada por un adversario.</li>
+        <li>Los jugadores cuentan con 6 vidas para adivinar la palabra secreta.</li>
+        <li>Cada letra que se ingrese y no aparezca en la palabra restará una vida.</li>
+        <li>Si se pierden todas las vidas termina el turno de ese jugador sin sumar puntos.</li>
+        <li>Si la palabra es adivinada se le sumarán al jugador tantos puntos como vidas restantes posea.</li>
       </ul>
     </div>
-  </div>
+  </main>
+
+  <footer id="footer">
+    <div class="d-none" id="piePagina">
+      <button class="btn btn-secondary" type="button" id="guardar">
+        Guardar Juego
+      </button>
+      <button class="btn btn-secondary" type="button" id="finalizar">
+        Finalizar Juego
+      </button>
+      <div class="dropup" id="rulesButton">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Reglas
+        </button>
+      </div>
+    </div>
+    <p>Copyright © 2023 - Derechos reservados</p>
+    <div class="contacto">
+      <p>Design by Daniel Brusatin</p>
+      <div><a href="https://api.whatsapp.com/send/?phone=5491138996760&text&type=phone_number&app_absent=0"
+        target="_blank"><img src="../img/wp2.png" alt="Contacto por whatsapp"></a></div>
+      <div><a href="https://www.linkedin.com/in/danielbrusatin/" target="_blank"><img src="../img/linkedin.png"
+        alt="Pagina de linkedin"></a></div>
+      <div><a href="https://www.instagram.com/danielbrusatin/" target="_blank"><img src="../img/instagram2.png"
+        alt="Pagina de instagram"></a></div>
+      <div><a href="mailto:danielbrusatin.db@gmail.com?Subject=Contacto"><img src="../img/gmail.png"
+        alt="Enviar correo"></a></div>
+    </div>
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.22/dist/sweetalert2.all.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script src="./js/main.js"></script>

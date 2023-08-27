@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Hahmlet&family=Inter&display=swap");
+
 body {
     background-color: aquamarine;
 }
@@ -11,11 +13,16 @@ body {
 #tablero {
     display: grid;
     grid-template: 
-    "titulo titulo" auto
+    "imagen categoria" auto
+    "imagen titulo" auto
     "imagen vidas" 15%
     "imagen palabra" auto
     "imagen letras" auto/30% 70%;
     margin: 10px 5vw;
+}
+#category {
+    grid-area: categoria;
+    text-align: center;
 }
 #title {
     grid-area: titulo;
@@ -29,7 +36,7 @@ body {
     text-align: center;
 }
 #lifes p {
-    margin-top: 1rem;
+    margin: 0px;
 }
 #word-in-game {
     grid-area: palabra;
@@ -46,18 +53,19 @@ body {
     border-top: 1px solid black;
 }
 .letter {
-    margin: 3px 2px;
+    margin: 3px 1px;
 }
 
 
 .letras {
-    width: 35px;
+    max-width: 35px;
     height: 35px;
     margin: 2px;
     background-color: white;
     border: solid 2px black;
     text-align: center;
     font-size: larger;
+    flex: auto;
 }
 
 
@@ -95,8 +103,6 @@ svg {
 }
 
 #piePagina {
-    position: fixed;
-    bottom: 0px;
     width: 100vw;
     display: flex;
     justify-content: space-between;
@@ -131,6 +137,7 @@ tr .name {
 @media screen and (max-width: 768px) {
     #tablero {
         grid-template: 
+        "categoria" auto
         "titulo" auto
         "vidas" auto
         "imagen" auto
@@ -160,4 +167,51 @@ tr .name {
     #names>* {
         flex-direction: column;
     }
+}
+
+
+
+footer {
+    background-color: #90CBB9;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+footer p {
+    margin: 0px;
+    font-size: small;
+}
+footer .contacto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+footer .contacto div img {
+    margin: 4px;
+    width: 20px;
+    filter: grayscale(100%);
+    transition: all 0.5s;
+}
+footer .contacto div img:hover {
+    filter: none;
+    animation: hover 0.3s;
+}
+@keyframes hover {
+    0% {
+        transform: rotate(-20deg) scale(110%);
+    }
+    50% {
+        transform: rotate(20deg) scale(110%);
+    }
+    100% {
+        transform: rotate(-20deg) scale(110%);
+    }
+}
+
+#bandera {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 96px;
 }
