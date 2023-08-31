@@ -320,7 +320,7 @@ function render () {
   const lifes = document.querySelector('#lifes');
   const imagen = document.querySelector('#imagen');
   const wordInGame = document.querySelector('#word-in-game');
-  lifes.innerHTML = `<p>Vidas restantes: ${vidas}</p>`;
+  lifes.innerHTML = `<p>Vidas: ${vidas}</p>`;
   imagen.innerHTML = personaje[vidas];
   wordInGame.innerHTML = '';
   for (let letra in palabraAdivinada) {

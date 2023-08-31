@@ -33,8 +33,12 @@ h1 {
     margin: 0px;
     align-self: center;
     font-family: "Sigmar", cursive;
+    font-weight: bolder;
 }
 #bienvenida {
+    text-align: center;
+    font-weight: 700;
+    padding: 10px;
     border-top: 10px solid ;
     border-image: linear-gradient(#0F969C,#6DA5C0) 100 / 10px 0px 0px;
 }
@@ -42,14 +46,69 @@ h1 {
     border-bottom: 10px solid white ;
     border-image: linear-gradient(#6DA5C0, #0F969C) 100% /0px 100% 20px;
 }
+#inicio > div {
+    padding: 10px 20px;
+}
+#inicio button {
+    background-color: #294D61;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+    transition: all 0.5s;
 
-.letter {
-    width: 30px;
-    color: black;
-    margin: 3px 1px;
+}
+#inicio button:disabled {
+    filter: grayscale(75%);
+}
+#select > div {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 2fr 4fr 4fr 2fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 2vw ;
+}
+#pokemons {
+    grid-area: 1/2 ;
+}
+#paises {
+    grid-area: 1/3 ;
+}
+#animales {
+    grid-area: 2/2;
+}
+#clasico {
+    grid-area: 2/3;
+}
+.fila {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+input {
+    border-radius: 5px;
+    text-align: center;
 }
 
+.letter {
+    max-width: 37px;
+    max-height: 37px;
+    width: calc(((100% - 6px) / 10) - 2px);
+    height: calc(((100vw - 6px) / 10) - 2px);
+    color: black;
+    margin: 3px 1px;
+    transition: all 0.5s;
+}
 
+.dropdown-menu {
+    border: 2px solid #06151A;
+    background-color: #0F969C;
+    color: white;
+}
+
+.dropdown-menu table{
+    color:white;
+    --bs-table-striped-bg: #0C7075;
+}
 #tablero {
     display: grid;
     grid-template: 
@@ -144,7 +203,7 @@ svg {
 #piePagina {
     width: 100vw;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     background: linear-gradient(#6DA5C0, 50%, #0F969C);
 }
 
@@ -176,6 +235,15 @@ tr .name {
 }
 
 @media screen and (max-width: 768px) {
+    body {
+        height: 100vh;
+    }
+    #select > div {
+        grid-template-columns: 1fr 5fr 5fr 1fr;
+    }
+    #select img {
+        /* width: 10px; */
+    }
     #tablero {
         grid-template: 
         "categoria categoria" auto
@@ -207,12 +275,10 @@ tr .name {
     #names>* {
         flex-direction: column;
     }
-    .letter {
-        width: calc(((100vw - 6px) / 10) - 2px);
+    #piePagina {
+        justify-content: space-between;
     }
-    .fila {
-        display: flex;
-    }
+    
 }
 
 
