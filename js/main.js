@@ -16,7 +16,7 @@ const personaje = [
     <line id="left-arm" x1="115" x2="80" y1="85" y2="75"/>
     <line id="right-arm" x1="115" x2="150" y1="85" y2="75"/>
     <line id="left-leg" x1="115" x2="85" y1="125" y2="160"/>
-    <line id="right-leg" x1="145" x2="115" y1="160" y2="125"/>
+    <line class="dibujo" id="right-leg" x1="145" x2="115" y1="160" y2="125"/>
   </svg>`,
   `<svg viewBox="0 0 155 190">
     <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
@@ -31,7 +31,7 @@ const personaje = [
     <line id="body" x1="115" x2="115" y1="125" y2="70"/>
     <line id="left-arm" x1="115" x2="80" y1="85" y2="75"/>
     <line id="right-arm" x1="115" x2="150" y1="85" y2="75"/>
-    <line id="left-leg" x1="115" x2="85" y1="125" y2="160"/>
+    <line class="dibujo" id="left-leg" x1="115" x2="85" y1="125" y2="160"/>
   </svg>`,
   `<svg viewBox="0 0 155 190">
     <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
@@ -45,7 +45,7 @@ const personaje = [
     <circle id="head" cx="115" cy="55" r="15" fill="none"/>
     <line id="body" x1="115" x2="115" y1="125" y2="70"/>
     <line id="left-arm" x1="115" x2="80" y1="85" y2="75"/>
-    <line id="right-arm" x1="115" x2="150" y1="85" y2="75"/>
+    <line class="dibujo" id="right-arm" x1="115" x2="150" y1="85" y2="75"/>
   </svg>`,
   `<svg viewBox="0 0 155 190">
     <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
@@ -58,7 +58,7 @@ const personaje = [
     <line class="gallows" x1="20" x2="30" y1="170" y2="180"/>
     <circle id="head" cx="115" cy="55" r="15" fill="none"/>
     <line id="body" x1="115" x2="115" y1="125" y2="70"/>
-    <line id="left-arm" x1="115" x2="80" y1="85" y2="75"/>
+    <line class="dibujo" id="left-arm" x1="115" x2="80" y1="85" y2="75"/>
   </svg>`,
   `<svg viewBox="0 0 155 190">
     <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
@@ -70,7 +70,7 @@ const personaje = [
     <line class="gallows" x1="10" x2="20" y1="180" y2="170"/>
     <line class="gallows" x1="20" x2="30" y1="170" y2="180"/>
     <circle id="head" cx="115" cy="55" r="15" fill="none"/>
-    <line id="body" x1="115" x2="115" y1="125" y2="70"/>
+    <line class="dibujo" id="body" x1="115" x2="115" y1="70" y2="125"/>
   </svg>`,
   `<svg viewBox="0 0 155 190">
     <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
@@ -81,7 +81,7 @@ const personaje = [
     <line class="gallows" x1="5" x2="35" y1="180" y2="180"/>
     <line class="gallows" x1="10" x2="20" y1="180" y2="170"/>
     <line class="gallows" x1="20" x2="30" y1="170" y2="180"/>
-    <circle id="head" cx="115" cy="55" r="15" fill="none"/>
+    <circle class="dibujo" id="head" cx="115" cy="55" r="15" fill="none"/>
   </svg>`,
   `<svg viewBox="0 0 155 190">
     <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
@@ -316,12 +316,14 @@ function tablero () {
 /************************/
 /* Actualiza el tablero */
 /************************/
-function render () {
+function render (conta) {
   const lifes = document.querySelector('#lifes');
   const imagen = document.querySelector('#imagen');
   const wordInGame = document.querySelector('#word-in-game');
   lifes.innerHTML = `<p>Vidas: ${vidas}</p>`;
-  imagen.innerHTML = personaje[vidas];
+  if (!conta) {
+    imagen.innerHTML = personaje[vidas];
+  }
   wordInGame.innerHTML = '';
   for (let letra in palabraAdivinada) {
     wordInGame.innerHTML += /*html*/
@@ -363,10 +365,11 @@ function teclado (tecla) {
 /* Comprueba si la letra esta en la palabra y suma aciertos, o resta vidas si no lo esta */
 /*****************************************************************************************/
 function comprobarLetra (boton) {
+  let conta = 1;
   boton.setAttribute('disabled', '');
   if (!letrasPedidas.some(letraPedida => letraPedida == letraIngresada)) {
     letrasPedidas.push(letraIngresada);
-    let conta = 0;
+    conta = 0;
     for (let letra in palabraElegida) {
       if (letraIngresada == palabraElegida[letra]) {
         palabraAdivinada[letra] = letraIngresada;
@@ -399,13 +402,13 @@ function comprobarLetra (boton) {
       }
     }).showToast();
   }
-  comprobarEstado();
+  comprobarEstado(conta);
 }
 
 /*****************************************************************/
 /* Comprueba si se acabaron las vidas o si se adivino la palabra */
 /*****************************************************************/
-async function comprobarEstado () {
+async function comprobarEstado (conta) {
   let resultado;
   let mensaje;
   let icono;
@@ -453,7 +456,7 @@ async function comprobarEstado () {
     }
     elegir(resultado, mensaje, icono);
   }
-  render();
+  render(conta);
 }
 
 /*********************************************************/

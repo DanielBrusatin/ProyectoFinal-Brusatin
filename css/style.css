@@ -171,7 +171,16 @@ svg {
     stroke: black;
     stroke-width: 3px;
 }
-
+.dibujo {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dibujar 3s ease-in forwards;
+}
+@keyframes dibujar {
+    to{
+        stroke-dashoffset: 0;
+    }
+}
 #names {
     display: flex;
     flex-wrap: wrap;
@@ -258,7 +267,7 @@ tr .name {
         justify-content: center;
     }
     #imagen svg{
-        height: 10vh;
+        height: 45vh;
     }
     #word-in-game {
         margin: 10px 0px;
