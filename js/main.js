@@ -1,7 +1,6 @@
 /*************/
 /* Variables */
 /*************/
-let listaPalabras; //Listado de palabras para el juego
 const personaje = [
   `<svg viewBox="0 0 155 190">
     <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
@@ -95,16 +94,17 @@ const personaje = [
     <line class="gallows" x1="20" x2="30" y1="170" y2="180"/>
   </svg>`
 ]; // Array con los dibujos segun la vida restante
+let categoria; //Categoria del juego
+let data; //Datos traidos de los archivos locales y de la API
+let listaPalabras; //Listado de palabras para el juego
 let palabraElegida; //Palabra a adivinar
 let palabraAdivinada = []; //Palabra que se va a ir formando
 let largoPalabra = 0; //Largo de la palabra
+let indice; //Indice de la palabra elegida
 let vidas = 6; //Vidas en juego
 let aciertos = 0; //Contador de letras acertadas
 let letrasPedidas = []; //Letras que ya fueron ingresadas
 let letraIngresada = ""; //Letra ingresada en cada iteración
-let categoria; //Categoria del juego
-let indice; //Indice de la palabra elegida
-let data; //Datos traidos de los archivos locales y de la API
 class jugador {
   constructor (name) {
     this.nombre = name;
@@ -123,13 +123,12 @@ const players = document.querySelector('#players');
 const names = document.querySelector('#names');
 const numberOfPlayers = document.querySelector('#numberofplayers');
 const posiciones = document.querySelector('#puntajes tbody');
-const botonesCategoria = document.querySelectorAll('#select button')
-botonesCategoria.forEach(boton => boton.addEventListener('click', () => traerPalabras(boton.dataset.url, boton.id)))
+const botonesCategoria = document.querySelectorAll('#select button');
 
-document.addEventListener('DOMContentLoaded', () => localStorage.getItem('jugadores') && juegoGuardado()); // Si hay un juego guardado llama a funcion para cargarlo
-
-document.querySelector('#guardar').addEventListener('click', guardarJuego)
-document.querySelector('#finalizar').addEventListener('click', finalizarJuego)
+botonesCategoria.forEach(boton => boton.addEventListener('click', () => traerPalabras(boton.dataset.url, boton.id)));
+document.addEventListener('DOMContentLoaded', () => localStorage.getItem('juegoGuardado') && juegoGuardado()); // Si hay un juego guardado llama a funcion para cargarlo
+document.querySelector('#guardar').addEventListener('click', guardarJuego);
+document.querySelector('#finalizar').addEventListener('click', finalizarJuego);
 
 /*************************************************/
 /* Carga las palabras segun la categoria elegida */
@@ -145,9 +144,23 @@ async function traerPalabras (url, eleccion) {
     numberOfPlayers.classList.remove('d-none');
     players.select();
     players.focus();
-    } catch (error) {
-      console.log('error' , error)
-    }
+  } 
+  catch (error) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Error al cargar las palabras',
+      text: '',
+      confirmButtonText: 'Elegir otra categoria',
+      showDenyButton: true,
+      denyButtonText: 'Reintentar',
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+    }).then((result) => {
+      if (result.isDenied) {
+        traerPalabras (url, eleccion);
+      }
+    });
+  }
 }
 
 /*******************************************************************************************/
@@ -246,14 +259,14 @@ function elegirPalabra(aleatoria) {
 /****************************/
 function tablero () {
   document.querySelector('#piePagina').classList.remove('d-none');
-  rules.classList.add('dropdown-menu')
+  document.querySelector('header button').classList.remove('d-none');
+  rules.classList.add('dropdown-menu');
   document.querySelector('#rulesButton').appendChild(rules);
-
   borrarHtml(main);
   main.innerHTML = /*html*/
   `
-  <h2 id="category">Categoria: ${categoria.toUpperCase()}</h2>
-  <h3 id="title">TURNO DE ${jugadores[turno].nombre}</h3>
+  <h3 id="category">Categoria: ${categoria.toUpperCase()}</h3>
+  <h5 id="title">TURNO DE ${jugadores[turno].nombre}</h5>
   <div id="lifes"></div>
   <div id="imagen"></div>
   <div id="word-in-game"></div>
@@ -346,7 +359,6 @@ function teclado (tecla) {
   });
 }
 
-
 /*****************************************************************************************/
 /* Comprueba si la letra esta en la palabra y suma aciertos, o resta vidas si no lo esta */
 /*****************************************************************************************/
@@ -361,37 +373,31 @@ function comprobarLetra (boton) {
         conta += 1;
       }
     }
+    let texto;
+    let colorFondo;
     if (conta == 0) {
       vidas -= 1;
       boton.classList.add('fallo');
-      Toastify({
-        text: 'Letra incorrecta',
-        duration: 1000,
-        position: 'center',
-        gravity: 'top',
-        offset: {
-          y: '100%',
-        },
-        style: {
-          background: 'linear-gradient(to right, rgb(255, 10, 31), rgb(255, 195, 113))',
-        }
-      }).showToast();
+      texto = 'Letra incorrecta';
+      colorFondo = 'rgb(255, 10, 31), rgb(255, 195, 113)';
     } else {
       aciertos += conta;
       boton.classList.add('acierto');
-      Toastify({
-        text: 'Letra correcta',
-        duration: 1000,
-        position: 'center',
-        gravity: 'top',
-        offset: {
-          y: '100%',
-        },
-        style: {
-          background: 'linear-gradient(to right, rgb(34, 159, 0), rgb(150, 201, 61))',
-        }
-      }).showToast();
+      texto = 'Letra correcta';
+      colorFondo = 'rgb(34, 159, 0), rgb(150, 201, 61)';
     }
+    Toastify({
+      text: texto,
+      duration: 1000,
+      position: 'center',
+      gravity: 'top',
+      offset: {
+        y: '100%',
+      },
+      style: {
+        background: `linear-gradient(to right, ${colorFondo})`,
+      }
+    }).showToast();
   }
   comprobarEstado();
 }
@@ -475,7 +481,6 @@ function actualizarPosiciones () {
 /********************************************************************/
 function elegir (resultado, mensaje, icono) {
   Swal.fire({
-    title: 'Sweet!',
     icon: icono,
     title: resultado,
     html: mensaje,
@@ -500,14 +505,77 @@ function elegir (resultado, mensaje, icono) {
 /* Guarda las variables en el local storage */
 /********************************************/
 function guardarJuego () {
-  localStorage.setItem('palabraElegida', palabraElegida);
-  localStorage.setItem('palabraAdivinada', palabraAdivinada);
-  localStorage.setItem('vidas', vidas);
-  localStorage.setItem('aciertos', aciertos);
-  localStorage.setItem('letrasPedidas', letrasPedidas);
-  localStorage.setItem('jugadores', JSON.stringify(jugadores));
-  localStorage.setItem('turno',turno);
-  return false
+  const juegoGuardado = {
+    palabraElegida_g: palabraElegida,
+    palabraAdivinada_g: palabraAdivinada,
+    vidas_g: vidas,
+    aciertos_g: aciertos,
+    letrasPedidas_g: letrasPedidas,
+    jugadores_g: jugadores,
+    turno_g: turno,
+    categoria_g: categoria,
+    indice_g: indice
+  }
+  localStorage.setItem('juegoGuardado', JSON.stringify(juegoGuardado));
+  return false;
+}
+
+/************************************************************************/
+/* Muestra el juego guardado y pregunta si cargarlo o empezar uno nuevo */
+/************************************************************************/
+function juegoGuardado () {
+  const juegoCargado = JSON.parse(localStorage.getItem('juegoGuardado'));
+  jugadores = juegoCargado.jugadores_g;
+  cantidadJugadores = jugadores.length;
+  actualizarPosiciones();
+  const tabla = document.querySelector('table').cloneNode(true);
+  Swal.fire({
+    icon: 'question',
+    title: 'Hay un juego guardado',
+    html: tabla,
+    showDenyButton: true,
+    denyButtonText: 'Juego nuevo',
+    confirmButtonText: 'Continuar juego',
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      cargarJuego(juegoCargado);
+    } else if (result.isDenied) {
+      localStorage.clear();
+    }
+  });
+}
+
+/************************************************************/
+/* Carga el juego guardado desde el estado en que se guardo */
+/************************************************************/
+async function cargarJuego ({palabraElegida_g, palabraAdivinada_g, vidas_g, aciertos_g, letrasPedidas_g, turno_g, categoria_g, indice_g}) {
+  turno = turno_g;
+  categoria = categoria_g;
+  let categoriaElegida = document.querySelector(`#${categoria}`);
+  await traerPalabras(categoriaElegida.dataset.url, categoria);
+  if (palabraElegida_g.length != 0) {
+    palabraElegida = palabraElegida_g;
+    largoPalabra = palabraElegida.length;
+    palabraAdivinada = palabraAdivinada_g;
+    vidas = vidas_g;
+    aciertos =aciertos_g;
+    letrasPedidas = letrasPedidas_g;
+    indice = indice_g;
+    tablero();
+    letrasPedidas.forEach(letraPedida => {
+      const boton = document.querySelector(`#${letraPedida}`);
+      boton.setAttribute('disabled', '');
+      if (palabraElegida.some((letra) => letra == letraPedida)) {  
+        boton.classList.add('acierto');
+      } else {
+        boton.classList.add('fallo');
+      }
+    });
+  } else {
+    juego();
+  }
 }
 
 /*******************************************************************/
@@ -530,55 +598,3 @@ function finalizarJuego () {
   });
 }
 
-/************************************************************************/
-/* Muestra el juego guardado y pregunta si cargarlo o empezar uno nuevo */
-/************************************************************************/
-function juegoGuardado () {
-  jugadores = JSON.parse(localStorage.getItem('jugadores'));
-  cantidadJugadores = jugadores.length;
-  actualizarPosiciones();
-  const tabla = document.querySelector('table').cloneNode(true);
-  Swal.fire({
-    icon: 'question',
-    title: 'Hay un juego guardado',
-    html: tabla,
-    showDenyButton: true,
-    denyButtonText: 'Juego nuevo',
-    confirmButtonText: 'Continuar juego',
-    allowOutsideClick: false,
-    allowEscapeKey: false,
-  }).then((result) => {
-    if (result.isConfirmed) {
-      cargarJuego();
-    } else if (result.isDenied) {
-      localStorage.clear();
-    }
-  })
-}
-
-/************************************************************/
-/* Carga el juego guardado desde el estado en que se guardo */
-/************************************************************/
-function cargarJuego () {
-  turno = Number(localStorage.getItem('turno'));
-  if (localStorage.getItem('palabraElegida')) {
-    palabraElegida = localStorage.getItem('palabraElegida').split(',');
-    largoPalabra = palabraElegida.length;
-    palabraAdivinada = localStorage.getItem('palabraAdivinada').split(',');
-    vidas = Number(localStorage.getItem('vidas'));
-    aciertos = Number(localStorage.getItem('aciertos'));
-    letrasPedidas = localStorage.getItem('letrasPedidas').split(',');
-    tablero();
-    letrasPedidas.forEach(letraPedida => {
-      const boton = document.querySelector(`#${letraPedida}`);
-      boton.setAttribute('disabled', '');
-      if (palabraElegida.some((letra) => letra == letraPedida)) {  
-        boton.classList.add('acierto');
-      } else {
-        boton.classList.add('fallo');
-      }
-    });
-  } else {
-    juego();
-  }
-}

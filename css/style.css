@@ -1,7 +1,46 @@
 @import url("https://fonts.googleapis.com/css2?family=Hahmlet&family=Inter&display=swap");
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    list-style: none;
+}
 
 body {
-    background-color: aquamarine;
+    min-height: 100vh;
+    display: grid;
+    grid-template: 
+    "header" auto
+    "main"  1fr
+    "footer" auto;
+}
+header {
+    grid-area: header;
+    background-color: #0F969C;
+}
+header img {
+    margin: 5px 10px;
+}
+main {
+    grid-area: main;
+    background-color: #6DA5C0;
+}
+main * {
+    margin: 0px;
+}
+h1 {
+    margin: 0px;
+    align-self: center;
+    font-family: "Sigmar", cursive;
+}
+h2 {
+    border-top: 10px solid ;
+    border-image: linear-gradient(#0F969C,#6DA5C0) 100 / 10px 0px 0px;
+}
+#inicio {
+    border-bottom: 10px solid white ;
+    border-image: linear-gradient(#6DA5C0, #0F969C) 100% /0px 100% 20px;
 }
 
 .letter {
@@ -15,10 +54,10 @@ body {
     grid-template: 
     "imagen categoria" auto
     "imagen titulo" auto
-    "imagen vidas" 15%
-    "imagen palabra" auto
-    "imagen letras" auto/30% 70%;
-    margin: 10px 5vw;
+    "imagen vidas" auto
+    "imagen palabra" 1fr
+    "imagen letras" 1fr/30% 70%;
+    padding: 10px 10vw;
 }
 #category {
     grid-area: categoria;
@@ -30,6 +69,8 @@ body {
 }
 #imagen {
     grid-area: imagen;
+    display: flex;
+    align-items: center;
 }
 #lifes {
     grid-area: vidas;
@@ -106,10 +147,12 @@ svg {
     width: 100vw;
     display: flex;
     justify-content: space-between;
+    background: linear-gradient(#6DA5C0, 50%, #0F969C);
 }
 
 #puntajes button {
     width: 100vw;
+    padding: 0px;
 }
 
 tr * {
@@ -137,13 +180,12 @@ tr .name {
 @media screen and (max-width: 768px) {
     #tablero {
         grid-template: 
-        "categoria" auto
-        "titulo" auto
-        "vidas" auto
-        "imagen" auto
-        "palabra" auto
-        "letras" auto;
-        margin: 3px;
+        "categoria categoria" auto
+        "titulo vidas" auto
+        "imagen imagen" auto
+        "palabra palabra" auto
+        "letras letras" auto;
+        padding: 3px;
     }
     #imagen {
         display: flex;
@@ -172,7 +214,8 @@ tr .name {
 
 
 footer {
-    background-color: #90CBB9;
+    grid-area: footer;
+    background:#0F969C;
     padding-bottom: 5px;
     display: flex;
     flex-direction: column;
@@ -214,4 +257,14 @@ footer .contacto div img:hover {
     justify-content: center;
     align-items: center;
     height: 96px;
+}
+#bandera img {
+    border: 1px solid black;
+}
+
+.btn-secondary {
+    --bs-btn-bg: #072E33;
+    --bs-btn-active-bg: #06151A;
+    --bs-btn-border-color: #072E33;
+    --bs-btn-hover-bg: #052529;
 }
