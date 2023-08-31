@@ -34,7 +34,7 @@ h1 {
     align-self: center;
     font-family: "Sigmar", cursive;
 }
-h2 {
+#bienvenida {
     border-top: 10px solid ;
     border-image: linear-gradient(#0F969C,#6DA5C0) 100 / 10px 0px 0px;
 }
@@ -46,6 +46,7 @@ h2 {
 .letter {
     width: 30px;
     color: black;
+    margin: 3px 1px;
 }
 
 
@@ -92,9 +93,6 @@ h2 {
     justify-content: center;
     align-items: center;
     border-top: 1px solid black;
-}
-.letter {
-    margin: 3px 1px;
 }
 
 
@@ -208,6 +206,12 @@ tr .name {
     }
     #names>* {
         flex-direction: column;
+    }
+    .letter {
+        width: calc(((100vw - 6px) / 10) - 2px);
+    }
+    .fila {
+        display: flex;
     }
 }
 
