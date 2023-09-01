@@ -55,7 +55,9 @@ h1 {
     border-radius: 10px;
     padding: 5px;
     transition: all 0.5s;
-
+}
+#inicio button, #inicio button p{
+    font-family: "Sigmar", cursive;
 }
 #inicio button:disabled {
     filter: grayscale(75%);
@@ -289,8 +291,6 @@ tr .name {
     }
     
 }
-
-
 
 footer {
     grid-area: footer;

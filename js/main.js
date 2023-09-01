@@ -3,95 +3,95 @@
 /*************/
 const personaje = [
   `<svg viewBox="0 0 155 190">
-    <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
-    <line class="gallows" x1="115" x2="115" y1="10" y2="35"/>
-    <line class="gallows" x1="105" x2="125" y1="35" y2="35"/>
-    <line class="gallows" x1="20" x2="20" y1="180" y2="10"/>
-    <line class="gallows" x1="50" x2="20" y1="10" y2="40"/>
-    <line class="gallows" x1="5" x2="35" y1="180" y2="180"/>
-    <line class="gallows" x1="10" x2="20" y1="180" y2="170"/>
-    <line class="gallows" x1="20" x2="30" y1="170" y2="180"/>
-    <circle id="head" cx="115" cy="55" r="15" fill="none"/>
-    <line id="body" x1="115" x2="115" y1="125" y2="70"/>
-    <line id="left-arm" x1="115" x2="80" y1="85" y2="75"/>
-    <line id="right-arm" x1="115" x2="150" y1="85" y2="75"/>
-    <line id="left-leg" x1="115" x2="85" y1="125" y2="160"/>
-    <line class="dibujo" id="right-leg" x1="145" x2="115" y1="160" y2="125"/>
+    <line x1="5" x2="115" y1="10" y2="10"/>
+    <line x1="115" x2="115" y1="10" y2="35"/>
+    <line x1="105" x2="125" y1="35" y2="35"/>
+    <line x1="20" x2="20" y1="180" y2="10"/>
+    <line x1="50" x2="20" y1="10" y2="40"/>
+    <line x1="5" x2="35" y1="180" y2="180"/>
+    <line x1="10" x2="20" y1="180" y2="170"/>
+    <line x1="20" x2="30" y1="170" y2="180"/>
+    <circle cx="115" cy="55" r="15" fill="none"/>
+    <line x1="115" x2="115" y1="125" y2="70"/>
+    <line x1="115" x2="80" y1="85" y2="75"/>
+    <line x1="115" x2="150" y1="85" y2="75"/>
+    <line x1="115" x2="85" y1="125" y2="160"/>
+    <line class="dibujo" x1="145" x2="115" y1="160" y2="125"/>
   </svg>`,
   `<svg viewBox="0 0 155 190">
-    <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
-    <line class="gallows" x1="115" x2="115" y1="10" y2="35"/>
-    <line class="gallows" x1="105" x2="125" y1="35" y2="35"/>
-    <line class="gallows" x1="20" x2="20" y1="180" y2="10"/>
-    <line class="gallows" x1="50" x2="20" y1="10" y2="40"/>
-    <line class="gallows" x1="5" x2="35" y1="180" y2="180"/>
-    <line class="gallows" x1="10" x2="20" y1="180" y2="170"/>
-    <line class="gallows" x1="20" x2="30" y1="170" y2="180"/>
-    <circle id="head" cx="115" cy="55" r="15" fill="none"/>
-    <line id="body" x1="115" x2="115" y1="125" y2="70"/>
-    <line id="left-arm" x1="115" x2="80" y1="85" y2="75"/>
-    <line id="right-arm" x1="115" x2="150" y1="85" y2="75"/>
-    <line class="dibujo" id="left-leg" x1="115" x2="85" y1="125" y2="160"/>
+    <line x1="5" x2="115" y1="10" y2="10"/>
+    <line x1="115" x2="115" y1="10" y2="35"/>
+    <line x1="105" x2="125" y1="35" y2="35"/>
+    <line x1="20" x2="20" y1="180" y2="10"/>
+    <line x1="50" x2="20" y1="10" y2="40"/>
+    <line x1="5" x2="35" y1="180" y2="180"/>
+    <line x1="10" x2="20" y1="180" y2="170"/>
+    <line x1="20" x2="30" y1="170" y2="180"/>
+    <circle cx="115" cy="55" r="15" fill="none"/>
+    <line x1="115" x2="115" y1="125" y2="70"/>
+    <line x1="115" x2="80" y1="85" y2="75"/>
+    <line x1="115" x2="150" y1="85" y2="75"/>
+    <line class="dibujo" x1="115" x2="85" y1="125" y2="160"/>
   </svg>`,
   `<svg viewBox="0 0 155 190">
-    <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
-    <line class="gallows" x1="115" x2="115" y1="10" y2="35"/>
-    <line class="gallows" x1="105" x2="125" y1="35" y2="35"/>
-    <line class="gallows" x1="20" x2="20" y1="180" y2="10"/>
-    <line class="gallows" x1="50" x2="20" y1="10" y2="40"/>
-    <line class="gallows" x1="5" x2="35" y1="180" y2="180"/>
-    <line class="gallows" x1="10" x2="20" y1="180" y2="170"/>
-    <line class="gallows" x1="20" x2="30" y1="170" y2="180"/>
-    <circle id="head" cx="115" cy="55" r="15" fill="none"/>
-    <line id="body" x1="115" x2="115" y1="125" y2="70"/>
-    <line id="left-arm" x1="115" x2="80" y1="85" y2="75"/>
-    <line class="dibujo" id="right-arm" x1="115" x2="150" y1="85" y2="75"/>
+    <line x1="5" x2="115" y1="10" y2="10"/>
+    <line x1="115" x2="115" y1="10" y2="35"/>
+    <line x1="105" x2="125" y1="35" y2="35"/>
+    <line x1="20" x2="20" y1="180" y2="10"/>
+    <line x1="50" x2="20" y1="10" y2="40"/>
+    <line x1="5" x2="35" y1="180" y2="180"/>
+    <line x1="10" x2="20" y1="180" y2="170"/>
+    <line x1="20" x2="30" y1="170" y2="180"/>
+    <circle cx="115" cy="55" r="15" fill="none"/>
+    <line x1="115" x2="115" y1="125" y2="70"/>
+    <line x1="115" x2="80" y1="85" y2="75"/>
+    <line class="dibujo" x1="115" x2="150" y1="85" y2="75"/>
   </svg>`,
   `<svg viewBox="0 0 155 190">
-    <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
-    <line class="gallows" x1="115" x2="115" y1="10" y2="35"/>
-    <line class="gallows" x1="105" x2="125" y1="35" y2="35"/>
-    <line class="gallows" x1="20" x2="20" y1="180" y2="10"/>
-    <line class="gallows" x1="50" x2="20" y1="10" y2="40"/>
-    <line class="gallows" x1="5" x2="35" y1="180" y2="180"/>
-    <line class="gallows" x1="10" x2="20" y1="180" y2="170"/>
-    <line class="gallows" x1="20" x2="30" y1="170" y2="180"/>
-    <circle id="head" cx="115" cy="55" r="15" fill="none"/>
-    <line id="body" x1="115" x2="115" y1="125" y2="70"/>
-    <line class="dibujo" id="left-arm" x1="115" x2="80" y1="85" y2="75"/>
+    <line x1="5" x2="115" y1="10" y2="10"/>
+    <line x1="115" x2="115" y1="10" y2="35"/>
+    <line x1="105" x2="125" y1="35" y2="35"/>
+    <line x1="20" x2="20" y1="180" y2="10"/>
+    <line x1="50" x2="20" y1="10" y2="40"/>
+    <line x1="5" x2="35" y1="180" y2="180"/>
+    <line x1="10" x2="20" y1="180" y2="170"/>
+    <line x1="20" x2="30" y1="170" y2="180"/>
+    <circle cx="115" cy="55" r="15" fill="none"/>
+    <line x1="115" x2="115" y1="125" y2="70"/>
+    <line class="dibujo" x1="115" x2="80" y1="85" y2="75"/>
   </svg>`,
   `<svg viewBox="0 0 155 190">
-    <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
-    <line class="gallows" x1="115" x2="115" y1="10" y2="35"/>
-    <line class="gallows" x1="105" x2="125" y1="35" y2="35"/>
-    <line class="gallows" x1="20" x2="20" y1="180" y2="10"/>
-    <line class="gallows" x1="50" x2="20" y1="10" y2="40"/>
-    <line class="gallows" x1="5" x2="35" y1="180" y2="180"/>
-    <line class="gallows" x1="10" x2="20" y1="180" y2="170"/>
-    <line class="gallows" x1="20" x2="30" y1="170" y2="180"/>
-    <circle id="head" cx="115" cy="55" r="15" fill="none"/>
-    <line class="dibujo" id="body" x1="115" x2="115" y1="70" y2="125"/>
+    <line x1="5" x2="115" y1="10" y2="10"/>
+    <line x1="115" x2="115" y1="10" y2="35"/>
+    <line x1="105" x2="125" y1="35" y2="35"/>
+    <line x1="20" x2="20" y1="180" y2="10"/>
+    <line x1="50" x2="20" y1="10" y2="40"/>
+    <line x1="5" x2="35" y1="180" y2="180"/>
+    <line x1="10" x2="20" y1="180" y2="170"/>
+    <line x1="20" x2="30" y1="170" y2="180"/>
+    <circle cx="115" cy="55" r="15" fill="none"/>
+    <line class="dibujo" x1="115" x2="115" y1="70" y2="125"/>
   </svg>`,
   `<svg viewBox="0 0 155 190">
-    <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
-    <line class="gallows" x1="115" x2="115" y1="10" y2="35"/>
-    <line class="gallows" x1="105" x2="125" y1="35" y2="35"/>
-    <line class="gallows" x1="20" x2="20" y1="180" y2="10"/>
-    <line class="gallows" x1="50" x2="20" y1="10" y2="40"/>
-    <line class="gallows" x1="5" x2="35" y1="180" y2="180"/>
-    <line class="gallows" x1="10" x2="20" y1="180" y2="170"/>
-    <line class="gallows" x1="20" x2="30" y1="170" y2="180"/>
-    <circle class="dibujo" id="head" cx="115" cy="55" r="15" fill="none"/>
+    <line x1="5" x2="115" y1="10" y2="10"/>
+    <line x1="115" x2="115" y1="10" y2="35"/>
+    <line x1="105" x2="125" y1="35" y2="35"/>
+    <line x1="20" x2="20" y1="180" y2="10"/>
+    <line x1="50" x2="20" y1="10" y2="40"/>
+    <line x1="5" x2="35" y1="180" y2="180"/>
+    <line x1="10" x2="20" y1="180" y2="170"/>
+    <line x1="20" x2="30" y1="170" y2="180"/>
+    <circle class="dibujo" cx="115" cy="55" r="15" fill="none"/>
   </svg>`,
   `<svg viewBox="0 0 155 190">
-    <line class="gallows" x1="5" x2="115" y1="10" y2="10"/>
-    <line class="gallows" x1="115" x2="115" y1="10" y2="35"/>
-    <line class="gallows" x1="105" x2="125" y1="35" y2="35"/>
-    <line class="gallows" x1="20" x2="20" y1="180" y2="10"/>
-    <line class="gallows" x1="50" x2="20" y1="10" y2="40"/>
-    <line class="gallows" x1="5" x2="35" y1="180" y2="180"/>
-    <line class="gallows" x1="10" x2="20" y1="180" y2="170"/>
-    <line class="gallows" x1="20" x2="30" y1="170" y2="180"/>
+    <line x1="5" x2="115" y1="10" y2="10"/>
+    <line x1="115" x2="115" y1="10" y2="35"/>
+    <line x1="105" x2="125" y1="35" y2="35"/>
+    <line x1="20" x2="20" y1="180" y2="10"/>
+    <line x1="50" x2="20" y1="10" y2="40"/>
+    <line x1="5" x2="35" y1="180" y2="180"/>
+    <line x1="10" x2="20" y1="180" y2="170"/>
+    <line x1="20" x2="30" y1="170" y2="180"/>
   </svg>`
 ]; // Array con los dibujos segun la vida restante
 let categoria; //Categoria del juego
@@ -173,7 +173,7 @@ numberOfPlayers.addEventListener('submit', (ev) => {
   start.setAttribute('disabled', '');
   cantidadJugadores = Number(players.value);
   for (let i = 1; i <= cantidadJugadores; i += 1) {
-    names.innerHTML += /*html*/
+    names.innerHTML += 
     `
     <div>
       <label for="player${i}">Nombre Jugador ${i}:</label>
@@ -181,7 +181,7 @@ numberOfPlayers.addEventListener('submit', (ev) => {
     </div>
     `;
   }
-  names.innerHTML += /*html*/
+  names.innerHTML += 
   `
   <div id="saveNames">
     <button>Guardar nombre/s</button>
@@ -263,7 +263,7 @@ function tablero () {
   rules.classList.add('dropdown-menu');
   document.querySelector('#rulesButton').appendChild(rules);
   borrarHtml(main);
-  main.innerHTML = /*html*/
+  main.innerHTML = 
   `
   <h3 id="category">Categoria: ${categoria.toUpperCase()}</h3>
   <h5 id="title">TURNO DE ${jugadores[turno].nombre}</h5>
@@ -326,7 +326,7 @@ function render (conta) {
   }
   wordInGame.innerHTML = '';
   for (let letra in palabraAdivinada) {
-    wordInGame.innerHTML += /*html*/
+    wordInGame.innerHTML += 
     `
     <div class="letras">${palabraAdivinada[letra]}</div>
     `;
@@ -467,7 +467,7 @@ function actualizarPosiciones () {
   jugadoresOrdenados.sort((a, b) => b.puntaje - a.puntaje);
   borrarHtml(posiciones);
   for (let i = 0; i < cantidadJugadores; i += 1) {
-    posiciones.innerHTML += /*html*/
+    posiciones.innerHTML += 
     `
     <tr>
       <th>${i + 1}</th>
@@ -600,4 +600,3 @@ function finalizarJuego () {
     }
   });
 }
-
