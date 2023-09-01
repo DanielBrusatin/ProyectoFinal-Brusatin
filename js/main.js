@@ -530,12 +530,13 @@ function juegoGuardado () {
   const juegoCargado = JSON.parse(localStorage.getItem('juegoGuardado'));
   jugadores = juegoCargado.jugadores_g;
   cantidadJugadores = jugadores.length;
+  categoria = juegoCargado.categoria_g;
   actualizarPosiciones();
-  const tabla = document.querySelector('table').cloneNode(true);
+  const tabla = document.querySelector('header .dropdown-menu').cloneNode(true);
   Swal.fire({
     icon: 'question',
     title: 'Hay un juego guardado',
-    html: tabla,
+    html: `<h4 style="text-decoration: underline;">Categoría: ${categoria.toUpperCase()}</h4>` + tabla.innerHTML,
     showDenyButton: true,
     denyButtonText: 'Juego nuevo',
     confirmButtonText: 'Continuar juego',
@@ -553,9 +554,8 @@ function juegoGuardado () {
 /************************************************************/
 /* Carga el juego guardado desde el estado en que se guardo */
 /************************************************************/
-async function cargarJuego ({palabraElegida_g, palabraAdivinada_g, vidas_g, aciertos_g, letrasPedidas_g, turno_g, categoria_g, indice_g}) {
+async function cargarJuego ({palabraElegida_g, palabraAdivinada_g, vidas_g, aciertos_g, letrasPedidas_g, turno_g, indice_g}) {
   turno = turno_g;
-  categoria = categoria_g;
   let categoriaElegida = document.querySelector(`#${categoria}`);
   await traerPalabras(categoriaElegida.dataset.url, categoria);
   if (palabraElegida_g.length != 0) {
